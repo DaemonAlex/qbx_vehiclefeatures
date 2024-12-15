@@ -46,7 +46,14 @@
 	  "vehicleseats": "Vehicle Seats",
 	  "vehicleextras": "Vehicle Extras",
 	  "getintrunk": "Get In Trunk",
-	  "putintrunk": "Put Person In Trunk"
+	  "putintrunk": "Put Person In Trunk",
+	  "vehicledoors": "Vehicle Doors",
+	  "driver_door": "Driver's Door",
+	  "passenger_door": "Passenger's Door",
+	  "rear_left_door": "Back Left Door",
+	  "rear_right_door": "Back Right Door",
+	  "hood_door": "Hood",
+	  "trunk_door": "Trunk"
     },
 	"targets": {
 		"getintrunk": "Get In Trunk",

@@ -3,8 +3,9 @@ return {
 	canCamMove = true, -- Allows the camera to move around the vehicle with a small radius for zooming in/out.
 	barPeeking = true, -- Adds 2 bars top and bottom so you have a peeking effect.
 	enableRadialMenu = true, -- Enable or disable the whole radial menu options.
-	enableExtraMenu = true, -- Enable or disable the vehicle extras menu.
 	enableSeatsMenu = true, -- Enable or disable the vehicle seat switch menu.
+	enableExtraMenu = true, -- Enable or disable the vehicle extras menu.
+	enableDoorsMenu = true, -- Enable or disable the vehicle doors menu.
 	enableFlipVehicle = true,  -- Enable or disable the flip vehicle option.
 	enableTrunkOptions = true,  -- Enable or disable the trunk hide/kidnap radial options.
 	enableTargets = true, -- Enable or disable target options for trunk hide/kidnap and flip vehicle.

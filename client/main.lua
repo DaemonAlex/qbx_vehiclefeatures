@@ -156,6 +156,37 @@ local function SetupVehicleExtras()
 	})
 end
 
+local function SetupVehicleDoors()
+	local vehicleDoors = {}
+	local doorsTable = {
+		[1] = locale('options.driver_door'), 
+		[2] = locale('options.passenger_door'),
+		[3] = locale('options.rear_left_door'),
+		[4] = locale('options.rear_right_door'),
+		[5] = locale('options.hood_door'),
+		[6] = locale('options.trunk_door'),
+	}
+	for i = 1, 6 do
+		vehicleDoors[#vehicleDoors + 1] = {
+			id = 'vehicleDoor'..tostring(i),
+			label = doorsTable[i],
+			icon = 'car-side',
+			onSelect = function()
+				if cache.vehicle then
+					doorControl(i-1)
+				else
+					exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
+				end
+			end,
+			keepOpen = true
+		}
+	end
+	lib.registerRadial({
+		id = 'vehicleDoorsMenu',
+		items = vehicleDoors
+	})
+end
+
 local function setupVehicleMenu()
 	local vehicleItems = {}
 	if config.enableFlipVehicle then
@@ -182,6 +213,14 @@ local function setupVehicleMenu()
 			label = locale('options.vehicleextras'),
 			icon = 'plus',
 			menu = 'vehicleExtrasMenu'
+		}
+	end
+	if config.enableDoorsMenu then
+		vehicleItems[#vehicleItems + 1] = {
+			id = 'vehicleDoors',
+			label = locale('options.vehicledoors'),
+			icon = 'car-side',
+			menu = 'vehicleDoorsMenu'
 		}
 	end
 	if config.enableTrunkOptions then
@@ -221,11 +260,11 @@ local function setupFlipTarget()
 	})
 end
 
-lib.onCache('vehicle', function(v)
-	if config.enableSeatsMenu then
-    	SetupVehicleSeats(v)
-	end
-end)
+if config.enableSeatsMenu then
+	lib.onCache('vehicle', function(v)
+		SetupVehicleSeats(v)
+	end)
+end
 
 AddEventHandler('onResourceStart', function(resource)
     if cache.resource ~= resource then return end
@@ -234,11 +273,14 @@ AddEventHandler('onResourceStart', function(resource)
 	end
 	if not config.enableRadialMenu then return end
     if LocalPlayer.state.isLoggedIn then
+		if config.enableSeatsMenu then
+			SetupVehicleSeats()
+		end
 		if config.enableExtraMenu then
 			SetupVehicleExtras()
 		end
-		if config.enableSeatsMenu then
-			SetupVehicleSeats()
+		if config.enableDoorsMenu then
+			SetupVehicleDoors()
 		end
         setupVehicleMenu()
     end
@@ -249,11 +291,14 @@ AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
 		setupFlipTarget()
 	end
 	if not config.enableRadialMenu then return end
+	if config.enableSeatsMenu then
+		SetupVehicleSeats()
+	end
 	if config.enableExtraMenu then
 		SetupVehicleExtras()
 	end
-	if config.enableSeatsMenu then
-		SetupVehicleSeats()
+	if config.enableDoorsMenu then
+		SetupVehicleDoors()
 	end
     setupVehicleMenu()
 end)

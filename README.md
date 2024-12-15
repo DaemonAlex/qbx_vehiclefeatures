@@ -26,8 +26,9 @@ The configuration file allows you to customize various aspects of the qbx_vehicl
 
 **Radial Menu Options**
 - enableradialmenu (boolean): Enables or disables the entire radial menu functionality.
-- enableExtraMenu (boolean): Toggles the vehicle extras menu.
 - enableSeatsMenu (boolean): Toggles the seat-switching menu.
+- enableExtraMenu (boolean): Toggles the vehicle extras menu.
+- enableDoorsMenu (boolean): Toggles the vehicle doors menu.
 - enableFlipVehicle (boolean): Toggles the option to flip overturned vehicles.
 - enableTrunkOptions (boolean): Enables hiding and kidnapping options for the trunk.
 

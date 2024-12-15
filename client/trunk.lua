@@ -172,7 +172,7 @@ local function startThreads()
 					cancelTrunk()
 					break
 				end
-				if LocalPlayer.state.isDead then
+				if LocalPlayer.state?.isDead then
 					cancelTrunk()
 					break
 				end
