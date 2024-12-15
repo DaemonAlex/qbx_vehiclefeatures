@@ -1,9 +1,9 @@
 fx_version 'cerulean'
 game 'gta5'
 
-description 'qbx_hidetrunk'
-repository 'https://github.com/Qbox-project/qbx_hidetrunk'
-version '1.0.0'
+description 'qbx_vehiclefeatures'
+repository 'https://github.com/0Programmer/qbx_vehiclefeatures'
+version '1.1.0'
 ox_lib 'locale'
 
 shared_scripts {

@@ -1,9 +1,9 @@
-RegisterNetEvent('qbx_hidetrunk:server:syncDoor', function(open, plate, door)
+RegisterNetEvent('qbx_vehiclefeatures:server:syncDoor', function(open, plate, door)
 	if GetInvokingResource() then return end
-    TriggerClientEvent('qbx_hidetrunk:client:syncDoor', -1, plate, door, open)
+    TriggerClientEvent('qbx_vehiclefeatures:client:syncDoor', -1, plate, door, open)
 end)
 
-RegisterNetEvent('qbx_hidetrunk:server:setTrunkBusy', function(vehNetId, state)
+RegisterNetEvent('qbx_vehiclefeatures:server:setTrunkBusy', function(vehNetId, state)
 	if GetInvokingResource() then return end
 	local vehicleEntity = NetworkGetEntityFromNetworkId(vehNetId)
 	if type(state) ~= 'boolean' or not DoesEntityExist(vehicleEntity) then return end
@@ -13,5 +13,5 @@ end)
 lib.addCommand('getintrunk', {
     help = locale("general.getintrunk_command_desc"),
 }, function(source)
-    TriggerClientEvent('qbx_hidetrunk:client:getInTrunk', source)
+    TriggerClientEvent('qbx_vehiclefeatures:client:getInTrunk', source)
 end)

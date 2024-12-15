@@ -1,22 +1,56 @@
 {
     "error": {
       "no_vehicle_found": "No vehicle found",
+      "extra_deactivated": "Extra %s has been deactivated",
+      "extra_not_present": "Extra %s is not present on this vehicle",
+      "not_driver": "You are not the driver of the vehicle",
+      "vehicle_driving_fast": "This vehicle is moving too fast",
+      "race_harness_on": "You have a race harness on, you can't switch to a seat",
+      "vehicle_seatbelt_on": "You have a race harness on, you can't switch to a seat",
+      "not_kidnapped": "You did not kidnap this person",
       "trunk_closed": "The trunk is closed",
       "cant_enter_trunk": "You can't get in this trunk",
       "already_in_trunk": "You are already in the trunk",
+      "cancel_task": "Task cancelled",
       "someone_in_trunk": "Someone is already in the trunk",
-      "not_kidnapped": "You did not kidnap this person",
-	  "trunk_damaged": "The trunk is too damaged to lie in"
+      "no_vehicle_nearby": "No vehicle nearby for flipping",
+      "seat_occupied": "There is someone in this seat already",
+	  "not_in_vehicle": "You need to be in a vehicle to do this"
+    },
+	"info": {
+		"switched_seats": "Switched to %s"
+	},
+    "progress": {
+      "flipping_car": "Flipping vehicle.."
     },
     "success": {
-      "entered_trunk": "You're in the trunk"
+      "extra_activated": "Extra %s has been activated",
+      "entered_trunk": "You're in the trunk",
+      "flipped_car": "Vehicle flipped successfully!"
     },
     "general": {
       "get_out_trunk_button": "[E] Get out of the trunk",
       "close_trunk_button": "[G] Close the trunk",
       "open_trunk_button": "[G] Open the trunk",
       "getintrunk_command_desc": "Get in trunk",
-      "putintrunk_command_desc": "Put player in trunk",
-      "getintrunk_target": "Get in trunk"
-    }
+      "putintrunk_command_desc": "Put player in trunk"
+    },
+    "options": {
+      "flip": "Flip Vehicle",
+      "vehicle": "Vehicle Options",
+      "driver_seat": "Driver's Seat",
+      "passenger_seat": "Passenger Seat",
+      "other_seats": "Other Seat",
+      "rear_left_seat": "Rear Left Seat",
+      "rear_right_seat": "Rear Right Seat",
+	  "vehicleseats": "Vehicle Seats",
+	  "vehicleextras": "Vehicle Extras",
+	  "getintrunk": "Get In Trunk",
+	  "putintrunk": "Put Person In Trunk"
+    },
+	"targets": {
+		"getintrunk": "Get In Trunk",
+		"putintrunk": "Put Person In Trunk",
+		"flip": "Flip Vehicle"
+	}
 }

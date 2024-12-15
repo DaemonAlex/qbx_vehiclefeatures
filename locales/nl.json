@@ -1,22 +1,56 @@
 {
     "error": {
       "no_vehicle_found": "Geen voertuig gevonden",
+      "extra_deactivated": "Extra %s is gedeactiveerd",
+      "extra_not_present": "Extra %s is niet aanwezig op dit voertuig",
+      "not_driver": "Je bent niet de bestuurder van het voertuig",
+      "vehicle_driving_fast": "Dit voertuig rijdt te snel",
+      "race_harness_on": "Je hebt een raceharnas om, je kunt niet wisselen van stoel",
+      "vehicle_seatbelt_on": "Je hebt een gordel om, je kunt niet wisselen van stoel",
+      "not_kidnapped": "Je hebt deze persoon niet ontvoerd",
       "trunk_closed": "De kofferbak is gesloten",
-      "cant_enter_trunk": "Je kunt niet in deze kofferbak stappen",
+      "cant_enter_trunk": "Je kunt niet in deze kofferbak",
       "already_in_trunk": "Je zit al in de kofferbak",
+      "cancel_task": "Geannuleerd",
       "someone_in_trunk": "Er zit al iemand in de kofferbak",
-      "not_kidnapped": "Je hebt de persoon niet ontvoerd",
-	  "trunk_damaged": "De kofferbak is te beschadigd om erin te liggen"
+      "no_vehicle_nearby": "Geen voertuig in de buurt om te flippen",
+      "seat_occupied": "Er zit al iemand op deze stoel",
+      "not_in_vehicle": "Je moet in een voertuig zitten om dit te doen"
+    },
+    "info": {
+        "switched_seats": "Wissel naar %s"
+    },
+    "progress": {
+      "flipping_car": "Voertuig Flippen.."
     },
     "success": {
-      "entered_trunk": "Je ligt nu in de kofferbak"
+      "extra_activated": "Extra %s is geactiveerd",
+      "entered_trunk": "Je zit in de kofferbak",
+      "flipped_car": "Voertuig succesvol weer terug op de banden!"
     },
     "general": {
       "get_out_trunk_button": "[E] Stap uit de kofferbak",
       "close_trunk_button": "[G] Sluit de kofferbak",
       "open_trunk_button": "[G] Open de kofferbak",
-      "getintrunk_command_desc": "Stap in de kofferbak",
-      "putintrunk_command_desc": "Stop iemand in de kofferbak",
-      "getintrunk_target": "Stap in kofferbak"
+      "getintrunk_command_desc": "Ga in de kofferbak",
+      "putintrunk_command_desc": "Stop persoon in kofferbak"
+    },
+    "options": {
+      "flip": "Voertuig Flippen",
+      "vehicle": "Voertuigopties",
+      "driver_seat": "Bestuurdersstoel",
+      "passenger_seat": "Passagiersstoel",
+      "other_seats": "Andere Stoel",
+      "rear_left_seat": "Achterstoel Links",
+      "rear_right_seat": "Achterstoel Rechts",
+      "vehicleseats": "Voertuigstoelen",
+      "vehicleextras": "Voertuig Extra's",
+      "getintrunk": "Ga in de Kofferbak",
+      "putintrunk": "Stop Persoon in Kofferbak"
+    },
+    "targets": {
+        "getintrunk": "Stap in kofferbak",
+        "putintrunk": "Stop Persoon in Kofferbak",
+        "flip": "Voertuig Flippen"
     }
 }
