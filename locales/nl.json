@@ -16,6 +16,7 @@
       "close_trunk_button": "[G] Sluit de kofferbak",
       "open_trunk_button": "[G] Open de kofferbak",
       "getintrunk_command_desc": "Stap in de kofferbak",
-      "putintrunk_command_desc": "Stop iemand in de kofferbak"
+      "putintrunk_command_desc": "Stop iemand in de kofferbak",
+      "getintrunk_target": "Stap in kofferbak"
     }
 }
