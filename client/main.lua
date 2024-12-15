@@ -229,6 +229,10 @@ end)
 
 AddEventHandler('onResourceStart', function(resource)
     if cache.resource ~= resource then return end
+	if config.enableTargets and config.enableFlipVehicle then
+		setupFlipTarget()
+	end
+	if not config.enableRadialMenu then return end
     if LocalPlayer.state.isLoggedIn then
 		if config.enableExtraMenu then
 			SetupVehicleExtras()
@@ -236,22 +240,20 @@ AddEventHandler('onResourceStart', function(resource)
 		if config.enableSeatsMenu then
 			SetupVehicleSeats()
 		end
-		if config.enableTargets and config.enableFlipVehicle then
-			setupFlipTarget()
-		end
         setupVehicleMenu()
     end
 end)
 
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
+	if config.enableTargets and config.enableFlipVehicle then
+		setupFlipTarget()
+	end
+	if not config.enableRadialMenu then return end
 	if config.enableExtraMenu then
 		SetupVehicleExtras()
 	end
 	if config.enableSeatsMenu then
 		SetupVehicleSeats()
-	end
-	if config.enableTargets and config.enableFlipVehicle then
-		setupFlipTarget()
 	end
     setupVehicleMenu()
 end)
