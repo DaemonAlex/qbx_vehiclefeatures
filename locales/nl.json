@@ -1,0 +1,21 @@
+{
+    "error": {
+      "no_vehicle_found": "Geen voertuig gevonden",
+      "trunk_closed": "De kofferbak is gesloten",
+      "cant_enter_trunk": "Je kunt niet in deze kofferbak stappen",
+      "already_in_trunk": "Je zit al in de kofferbak",
+      "someone_in_trunk": "Er zit al iemand in de kofferbak",
+      "not_kidnapped": "Je hebt de persoon niet ontvoerd",
+	  "trunk_damaged": "De kofferbak is te beschadigd om erin te liggen"
+    },
+    "success": {
+      "entered_trunk": "Je ligt nu in de kofferbak"
+    },
+    "general": {
+      "get_out_trunk_button": "[E] Stap uit de kofferbak",
+      "close_trunk_button": "[G] Sluit de kofferbak",
+      "open_trunk_button": "[G] Open de kofferbak",
+      "getintrunk_command_desc": "Stap in de kofferbak",
+      "putintrunk_command_desc": "Stop iemand in de kofferbak"
+    }
+}

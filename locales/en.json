@@ -1,0 +1,21 @@
+{
+    "error": {
+      "no_vehicle_found": "No vehicle found",
+      "trunk_closed": "The trunk is closed",
+      "cant_enter_trunk": "You can't get in this trunk",
+      "already_in_trunk": "You are already in the trunk",
+      "someone_in_trunk": "Someone is already in the trunk",
+      "not_kidnapped": "You did not kidnap this person",
+	  "trunk_damaged": "The trunk is too damaged to lie in"
+    },
+    "success": {
+      "entered_trunk": "You're in the trunk"
+    },
+    "general": {
+      "get_out_trunk_button": "[E] Get out of the trunk",
+      "close_trunk_button": "[G] Close the trunk",
+      "open_trunk_button": "[G] Open the trunk",
+      "getintrunk_command_desc": "Get in trunk",
+      "putintrunk_command_desc": "Put player in trunk"
+    }
+}
