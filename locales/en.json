@@ -16,6 +16,7 @@
       "close_trunk_button": "[G] Close the trunk",
       "open_trunk_button": "[G] Open the trunk",
       "getintrunk_command_desc": "Get in trunk",
-      "putintrunk_command_desc": "Put player in trunk"
+      "putintrunk_command_desc": "Put player in trunk",
+      "getintrunk_target": "Get in trunk"
     }
 }
