@@ -256,9 +256,9 @@ end)
 
 exports.ox_target:addGlobalVehicle({
     {
-        name = 'qbx_radialmenu_target:trunk',
+        name = 'qbx_hidetrunk:getintrunk',
         icon = 'fa-solid fa-car-rear',
-        label = "Stap in kofferbak",
+        label = locale("general.getintrunk_target"),
         offset = vec3(0.5, 0, 0.5),
         distance = 2,
         canInteract = function(entity, distance, coords, name)
@@ -272,82 +272,3 @@ exports.ox_target:addGlobalVehicle({
         end
     }
 })
-
-
-
-
-
-function DrawBoundingBox(entity)
-    local model = GetEntityModel(entity)
-    local min, max = GetModelDimensions(model) -- Verkrijg dimensies (min en max)
-
-    -- Bereken de hoeken van de bounding box in wereldcoördinaten
-    local corners = {
-        -- Onderste 4 hoeken
-        GetOffsetFromEntityInWorldCoords(entity, min.x, min.y, min.z),
-        GetOffsetFromEntityInWorldCoords(entity, max.x, min.y, min.z),
-        GetOffsetFromEntityInWorldCoords(entity, max.x, max.y, min.z),
-        GetOffsetFromEntityInWorldCoords(entity, min.x, max.y, min.z),
-
-        -- Bovenste 4 hoeken
-        GetOffsetFromEntityInWorldCoords(entity, min.x, min.y, max.z),
-        GetOffsetFromEntityInWorldCoords(entity, max.x, min.y, max.z),
-        GetOffsetFromEntityInWorldCoords(entity, max.x, max.y, max.z),
-        GetOffsetFromEntityInWorldCoords(entity, min.x, max.y, max.z),
-    }
-
-    -- Teken lijnen om de box
-    for i = 1, 4 do
-        local next = (i % 4) + 1
-        DrawLine(corners[i].x, corners[i].y, corners[i].z, corners[next].x, corners[next].y, corners[next].z, 0, 255, 0, 255) -- Onderzijde
-        DrawLine(corners[i + 4].x, corners[i + 4].y, corners[i + 4].z, corners[next + 4].x, corners[next + 4].y, corners[next + 4].z, 0, 255, 0, 255) -- Bovenzijde
-        DrawLine(corners[i].x, corners[i].y, corners[i].z, corners[i + 4].x, corners[i + 4].y, corners[i + 4].z, 0, 255, 0, 255) -- Zijkanten
-    end
-end
-
-function DrawBoxesAroundAllVehicles()
-    local playerPed = PlayerPedId()
-    local playerCoords = GetEntityCoords(playerPed)
-    local radius = 100.0 -- Straal om voertuigen te detecteren
-
-    -- Haal alle voertuigen op in de straal
-    local vehicles = GetNearbyVehicles(playerCoords, radius)
-
-    -- Teken een bounding box om elk voertuig
-    for _, vehicle in ipairs(vehicles) do
-        DrawBoundingBox(vehicle)
-    end
-end
-
--- Haal voertuigen binnen een straal op
-function GetNearbyVehicles(coords, radius)
-    local vehicles = {}
-    for vehicle in EnumerateVehicles() do
-        if #(GetEntityCoords(vehicle) - coords) <= radius then
-            table.insert(vehicles, vehicle)
-        end
-    end
-    return vehicles
-end
-
--- Enumeratie om voertuigen in de wereld op te halen
-function EnumerateVehicles()
-    return coroutine.wrap(function()
-        local handle, vehicle = FindFirstVehicle()
-        if handle then
-            local success
-            repeat
-                coroutine.yield(vehicle)
-                success, vehicle = FindNextVehicle(handle)
-            until not success
-            EndFindVehicle(handle)
-        end
-    end)
-end
-
-Citizen.CreateThread(function()
-    while true do
-        DrawBoxesAroundAllVehicles()
-        Citizen.Wait(0) -- Render elke frame
-    end
-end)
