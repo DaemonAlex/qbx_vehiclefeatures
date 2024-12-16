@@ -22,7 +22,8 @@ The configuration file allows you to customize various aspects of the qbx_vehicl
 **General Settings**
 - pedVisible (boolean): Determines if players hiding in the trunk remain visible.
 - canCamMove (boolean): Enables camera movement around the vehicle with a small zoom radius.
-- barPeeking (boolean): Adds cinematic bars at the top and bottom for a peeking effect.
+- barPeeking (boolean): Adds cinematic bars at the top and bottom for a peeking effect in the trunk.
+- drawText3dTrunk (boolean): Determines the drawText3d for showing how to open/close and exit the trunk.
 
 **Radial Menu Options**
 - enableradialmenu (boolean): Enables or disables the entire radial menu functionality.

@@ -131,7 +131,9 @@ local function startThreads()
                 if DoesEntityExist(lastVehicle) then
 					local drawPos = GetOffsetFromEntityInWorldCoords(lastVehicle, 0, -0.3, 0.1)
                     sleep = 0
-                    --qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z + 0.25), text =  locale("general.get_out_trunk_button")})
+                    if config.drawText3dTrunk then
+						qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z + 0.25), text =  locale("general.get_out_trunk_button")})
+					end
                     if IsControlJustPressed(0, 38) then
                         if GetVehicleDoorAngleRatio(lastVehicle, 5) > 0 then
                             local vehicleSpeed = (GetEntitySpeed(lastVehicle) * 3.6)
@@ -146,7 +148,9 @@ local function startThreads()
                         Wait(100)
                     end
                     if GetVehicleDoorAngleRatio(lastVehicle, 5) > 0 then
-                        --qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.close_trunk_button")})
+						if config.drawText3dTrunk then
+                        	qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.close_trunk_button")})
+						end
                         if IsControlJustPressed(0, 47) then
                             if not IsVehicleSeatFree(lastVehicle, -1) then
                                 TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', false, qbx.getVehiclePlate(lastVehicle), 5)
@@ -156,7 +160,9 @@ local function startThreads()
                             Wait(100)
                         end
                     else
-                        --qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.open_trunk_button")})
+						if config.drawText3dTrunk then
+                        	qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.open_trunk_button")})
+						end
                         if IsControlJustPressed(0, 47) then
                             if not IsVehicleSeatFree(lastVehicle, -1) then
                                 TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', true, qbx.getVehiclePlate(lastVehicle), 5)
