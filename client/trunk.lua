@@ -65,7 +65,7 @@ local function cancelTrunk()
         local vehicleSpeed = (GetEntitySpeed(lastVehicle) * 3.6)
         if vehicleSpeed > 5 and vehicleSpeed < config.allowedTrunkSpeed then
 			local velocity = GetEntityVelocity(lastVehicle) / 6.0
-			SetEntityHeading(cache.ped, GetEntityForwardVector(lastVehicle))
+			SetEntityHeading(cache.ped, (GetEntityHeading(lastVehicle) + 180) % 360)
 			lib.playAnim(cache.ped, 'nm@stunt_jump', 'jump_loop', 8.0, -8.0, -1, 0, 0, false, false, false)
 			SetEntityVelocity(cache.ped, velocity.x, velocity.y, velocity.z)
 			Wait(1000)
@@ -131,7 +131,7 @@ local function startThreads()
                 if DoesEntityExist(lastVehicle) then
 					local drawPos = GetOffsetFromEntityInWorldCoords(lastVehicle, 0, -0.3, 0.1)
                     sleep = 0
-                    qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z + 0.25), text =  locale("general.get_out_trunk_button")})
+                    --qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z + 0.25), text =  locale("general.get_out_trunk_button")})
                     if IsControlJustPressed(0, 38) then
                         if GetVehicleDoorAngleRatio(lastVehicle, 5) > 0 then
                             local vehicleSpeed = (GetEntitySpeed(lastVehicle) * 3.6)
@@ -146,7 +146,7 @@ local function startThreads()
                         Wait(100)
                     end
                     if GetVehicleDoorAngleRatio(lastVehicle, 5) > 0 then
-                        qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.close_trunk_button")})
+                        --qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.close_trunk_button")})
                         if IsControlJustPressed(0, 47) then
                             if not IsVehicleSeatFree(lastVehicle, -1) then
                                 TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', false, qbx.getVehiclePlate(lastVehicle), 5)
@@ -156,7 +156,7 @@ local function startThreads()
                             Wait(100)
                         end
                     else
-                        qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.open_trunk_button")})
+                        --qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z), text = locale("general.open_trunk_button")})
                         if IsControlJustPressed(0, 47) then
                             if not IsVehicleSeatFree(lastVehicle, -1) then
                                 TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', true, qbx.getVehiclePlate(lastVehicle), 5)
