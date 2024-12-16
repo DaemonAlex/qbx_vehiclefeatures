@@ -23,7 +23,7 @@ local function polar3DToWorld3D(entityPosition, radiusDeg, polarAngleDeg, yawAng
 end
 
 local function camControl(bool)
-    local drawPos = GetOffsetFromEntityInWorldCoords(lastVehicle, 0, -5.5, 0)
+    local camPos = GetOffsetFromEntityInWorldCoords(lastVehicle, 0, -5.5, 0)
     local vehHeading = GetEntityHeading(lastVehicle)
     if bool then
         RenderScriptCams(false, false, 0, true, false)
@@ -34,7 +34,7 @@ local function camControl(bool)
 
         trunkCam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
         SetCamActive(trunkCam, true)
-        SetCamCoord(trunkCam, drawPos.x, drawPos.y, drawPos.z + 2)
+        SetCamCoord(trunkCam, camPos.x, camPos.y, camPos.z + 2)
         SetCamRot(trunkCam, -2.5, 0.0, vehHeading, 0.0)
         RenderScriptCams(true, false, 0, true, true)
     else
@@ -48,9 +48,8 @@ local function camControl(bool)
 end
 
 local function exitTrunk()
-    local vehCoords = GetEntityCoords(lastVehicle)
     local min, max = GetModelDimensions(GetEntityModel(lastVehicle))
-    local backOffset = vec3(0.0, min.y - 0.3, 0.0)
+    local backOffset = vec3(0.0, min.y - 0.6, 0.0)
     local entityOffset = GetOffsetFromEntityInWorldCoords(lastVehicle, backOffset.x, backOffset.y, backOffset.z)
     SetEntityCoords(cache.ped, entityOffset.x, entityOffset.y, entityOffset.z, false, false, false, false)
 end
@@ -62,11 +61,15 @@ local function cancelTrunk()
     if DoesEntityExist(lastVehicle) then
         TriggerServerEvent('qbx_vehiclefeatures:server:setTrunkBusy', NetworkGetNetworkIdFromEntity(lastVehicle), false)
         exitTrunk()
+		PointCamAtEntity(trunkCam, cache.ped)
         local vehicleSpeed = (GetEntitySpeed(lastVehicle) * 3.6)
         if vehicleSpeed > 5 and vehicleSpeed < config.allowedTrunkSpeed then
-            local velocity = GetEntityVelocity(lastVehicle)
-            SetPedToRagdoll(cache.ped, 3000, 3000, 0, 0, 0, 0)
-            SetEntityVelocity(cache.ped, velocity / 6.0)
+			local velocity = GetEntityVelocity(lastVehicle) / 6.0
+			SetEntityHeading(cache.ped, GetEntityForwardVector(lastVehicle))
+			lib.playAnim(cache.ped, 'nm@stunt_jump', 'jump_loop', 8.0, -8.0, -1, 0, 0, false, false, false)
+			SetEntityVelocity(cache.ped, velocity.x, velocity.y, velocity.z)
+			Wait(1000)
+			SetPedToRagdoll(cache.ped, 4000, 4000, 0, false, false, false)
         end
     end
     if not config.pedVisible then
@@ -125,8 +128,8 @@ local function startThreads()
         while LocalPlayer.state?.insideTrunk do
             local sleep = 1000
             if not isKidnapped then
-                local drawPos = GetOffsetFromEntityInWorldCoords(cache.ped, 0, -0.1, 0.1)
                 if DoesEntityExist(lastVehicle) then
+					local drawPos = GetOffsetFromEntityInWorldCoords(lastVehicle, 0, -0.3, 0.1)
                     sleep = 0
                     qbx.drawText3d({coords = vector3(drawPos.x, drawPos.y, drawPos.z + 0.25), text =  locale("general.get_out_trunk_button")})
                     if IsControlJustPressed(0, 38) then
@@ -211,7 +214,11 @@ local function getInTrunk()
                             end
                             LocalPlayer.state:set('insideTrunk', true, true)
                             Wait(500)
-                            SetVehicleDoorShut(lastVehicle, 5, false)
+							if not IsVehicleSeatFree(lastVehicle, -1) then
+                                TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', false, qbx.getVehiclePlate(lastVehicle), 5)
+                            else
+                                SetVehicleDoorShut(lastVehicle, 5, false)
+                            end
                             exports.qbx_core:Notify(locale("success.entered_trunk"), 'success', 4000)
                             camControl(true)
                             startThreads()
