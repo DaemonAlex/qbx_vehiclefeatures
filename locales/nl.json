@@ -47,13 +47,13 @@
       "vehicleextras": "Voertuig Extra's",
       "getintrunk": "Ga in de Kofferbak",
       "putintrunk": "Stop Persoon in Kofferbak",
-	  "vehicledoors": "Voertuigdeuren",
-	  "driver_door": "Bestuurdersdeur",
-	  "passenger_door": "Passagiersdeur",
-	  "rear_left_door": "Achterdeur Links",
-	  "rear_right_door": "Achterdeur Rechts",
-	  "hood_door": "Motorkap",
-	  "trunk_door": "Kofferbak"
+      "vehicledoors": "Voertuigdeuren",
+      "driver_door": "Bestuurdersdeur",
+      "passenger_door": "Passagiersdeur",
+      "rear_left_door": "Achterdeur Links",
+      "rear_right_door": "Achterdeur Rechts",
+      "hood_door": "Motorkap",
+      "trunk_door": "Kofferbak"
     },
     "targets": {
         "getintrunk": "Stap in kofferbak",

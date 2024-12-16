@@ -22,13 +22,13 @@ local function setExtra(extra)
 end
 
 local function changeSeat(id, label)
-	local isSeatFree = IsVehicleSeatFree(cache.vehicle, id - 2)
+    local isSeatFree = IsVehicleSeatFree(cache.vehicle, id - 2)
     local speed = GetEntitySpeed(cache.vehicle)
     if LocalPlayer.state?.harness then
         return exports.qbx_core:Notify(locale('error.race_harness_on'), 'error')
     end
 
-	if LocalPlayer.state?.seatbelt then
+    if LocalPlayer.state?.seatbelt then
         return exports.qbx_core:Notify(locale('error.vehicle_seatbelt_on'), 'error')
     end
 
@@ -51,13 +51,13 @@ local function doorControl(door)
         if closestVehicle ~= cache.vehicle then
             if GetVehicleDoorAngleRatio(closestVehicle, door) > 0.0 then
                 if not IsVehicleSeatFree(closestVehicle, -1) then
-					TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', false, qbx.getVehiclePlate(closestVehicle), door)
+                    TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', false, qbx.getVehiclePlate(closestVehicle), door)
                 else
                     SetVehicleDoorShut(closestVehicle, door, false)
                 end
             else
                 if not IsVehicleSeatFree(closestVehicle, -1) then
-					TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', true, qbx.getVehiclePlate(closestVehicle), door)
+                    TriggerServerEvent('qbx_vehiclefeatures:server:syncDoor', true, qbx.getVehiclePlate(closestVehicle), door)
                 else
                     SetVehicleDoorOpen(closestVehicle, door, false, false)
                 end
@@ -75,7 +75,7 @@ local function doorControl(door)
 end
 
 local function flipVehicle()
-	if cache.vehicle then return end
+    if cache.vehicle then return end
     local coords = GetEntityCoords(cache.ped)
     local vehicle = lib.getClosestVehicle(coords)
     if not vehicle then return exports.qbx_core:Notify(locale('error.no_vehicle_nearby'), 'error') end
@@ -104,136 +104,136 @@ local function flipVehicle()
 end
 
 local function SetupVehicleSeats(vehicle)
-	lib.removeRadialItem('vehicleSeatsMenu')
-	local vehicleSeats = {}
-	local seatTable = {
-		[1] = locale('options.driver_seat'),
-		[2] = locale('options.passenger_seat'),
-		[3] = locale('options.rear_left_seat'),
-		[4] = locale('options.rear_right_seat'),
-	}
-	local amountOfSeats = vehicle and GetVehicleModelNumberOfSeats(GetEntityModel(vehicle)) or 2
-	for i = 1, amountOfSeats do
-		vehicleSeats[#vehicleSeats + 1] = {
-			id = 'vehicleSeat'..i,
-			label = seatTable[i] or locale('options.other_seats'),
-			icon = 'caret-up',
-			onSelect = function()
-				if cache.vehicle then
-					changeSeat(i, seatTable[i] or locale('options.other_seats'))
-				else
-					exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
-				end
-			end,
-		}
-	end
-	lib.registerRadial({
-		id = 'vehicleSeatsMenu',
-		items = vehicleSeats
-	})
+    lib.removeRadialItem('vehicleSeatsMenu')
+    local vehicleSeats = {}
+    local seatTable = {
+        [1] = locale('options.driver_seat'),
+        [2] = locale('options.passenger_seat'),
+        [3] = locale('options.rear_left_seat'),
+        [4] = locale('options.rear_right_seat'),
+    }
+    local amountOfSeats = vehicle and GetVehicleModelNumberOfSeats(GetEntityModel(vehicle)) or 2
+    for i = 1, amountOfSeats do
+        vehicleSeats[#vehicleSeats + 1] = {
+            id = 'vehicleSeat'..i,
+            label = seatTable[i] or locale('options.other_seats'),
+            icon = 'caret-up',
+            onSelect = function()
+                if cache.vehicle then
+                    changeSeat(i, seatTable[i] or locale('options.other_seats'))
+                else
+                    exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
+                end
+            end,
+        }
+    end
+    lib.registerRadial({
+        id = 'vehicleSeatsMenu',
+        items = vehicleSeats
+    })
 end
 
 local function SetupVehicleExtras()
-	local vehicleExtras = {}
-	for i = 1, 13 do
-		vehicleExtras[#vehicleExtras + 1] = {
-			id = 'vehicleExtra'..tostring(i),
-			label = 'Extra '..tostring(i),
-			icon = 'box-open',
-			onSelect = function()
-				if cache.vehicle then
-					setExtra(i)
-				else
-					exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
-				end
-			end,
-			keepOpen = true
-		}
-	end
-	lib.registerRadial({
-		id = 'vehicleExtrasMenu',
-		items = vehicleExtras
-	})
+    local vehicleExtras = {}
+    for i = 1, 13 do
+        vehicleExtras[#vehicleExtras + 1] = {
+            id = 'vehicleExtra'..tostring(i),
+            label = 'Extra '..tostring(i),
+            icon = 'box-open',
+            onSelect = function()
+                if cache.vehicle then
+                    setExtra(i)
+                else
+                    exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
+                end
+            end,
+            keepOpen = true
+        }
+    end
+    lib.registerRadial({
+        id = 'vehicleExtrasMenu',
+        items = vehicleExtras
+    })
 end
 
 local function SetupVehicleDoors()
-	local vehicleDoors = {}
-	local doorsTable = {
-		[1] = locale('options.driver_door'), 
-		[2] = locale('options.passenger_door'),
-		[3] = locale('options.rear_left_door'),
-		[4] = locale('options.rear_right_door'),
-		[5] = locale('options.hood_door'),
-		[6] = locale('options.trunk_door'),
-	}
-	for i = 1, 6 do
-		vehicleDoors[#vehicleDoors + 1] = {
-			id = 'vehicleDoor'..tostring(i),
-			label = doorsTable[i],
-			icon = 'car-side',
-			onSelect = function()
-				if cache.vehicle then
-					doorControl(i-1)
-				else
-					exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
-				end
-			end,
-			keepOpen = true
-		}
-	end
-	lib.registerRadial({
-		id = 'vehicleDoorsMenu',
-		items = vehicleDoors
-	})
+    local vehicleDoors = {}
+    local doorsTable = {
+        [1] = locale('options.driver_door'), 
+        [2] = locale('options.passenger_door'),
+        [3] = locale('options.rear_left_door'),
+        [4] = locale('options.rear_right_door'),
+        [5] = locale('options.hood_door'),
+        [6] = locale('options.trunk_door'),
+    }
+    for i = 1, 6 do
+        vehicleDoors[#vehicleDoors + 1] = {
+            id = 'vehicleDoor'..tostring(i),
+            label = doorsTable[i],
+            icon = 'car-side',
+            onSelect = function()
+                if cache.vehicle then
+                    doorControl(i-1)
+                else
+                    exports.qbx_core:Notify(locale('error.not_in_vehicle'), 'error')
+                end
+            end,
+            keepOpen = true
+        }
+    end
+    lib.registerRadial({
+        id = 'vehicleDoorsMenu',
+        items = vehicleDoors
+    })
 end
 
 local function setupVehicleMenu()
-	local vehicleItems = {}
-	if config.enableFlipVehicle then
-		vehicleItems[#vehicleItems + 1] = {
-			id = 'vehicleFlip',
-			label = locale('options.flip'),
-			icon = 'car-burst',
-			onSelect = function()
-				flipVehicle()
-			end,
-		}
-	end
-	if config.enableSeatsMenu then
-		vehicleItems[#vehicleItems + 1] = {
-			id = 'vehicleSeats',
-			label = locale('options.vehicleseats'),
-			icon = 'chair',
-			menu = 'vehicleSeatsMenu'
-		}
-	end
-	if config.enableExtraMenu then
-		vehicleItems[#vehicleItems + 1] = {
-			id = 'vehicleExtras',
-			label = locale('options.vehicleextras'),
-			icon = 'plus',
-			menu = 'vehicleExtrasMenu'
-		}
-	end
-	if config.enableDoorsMenu then
-		vehicleItems[#vehicleItems + 1] = {
-			id = 'vehicleDoors',
-			label = locale('options.vehicledoors'),
-			icon = 'car-side',
-			menu = 'vehicleDoorsMenu'
-		}
-	end
-	if config.enableTrunkOptions then
-		vehicleItems[#vehicleItems + 1] = {
-			id = 'vehicleGetInTrunk',
-			label = locale("options.getintrunk"),
-			icon = 'truck-ramp-box',
-			onSelect = function()
-				TriggerEvent('qbx_vehiclefeatures:client:getInTrunk')
-			end,
-		}
-		-- TODO: Add kidnapping item
-	end
+    local vehicleItems = {}
+    if config.enableFlipVehicle then
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehicleFlip',
+            label = locale('options.flip'),
+            icon = 'car-burst',
+            onSelect = function()
+                flipVehicle()
+            end,
+        }
+    end
+    if config.enableSeatsMenu then
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehicleSeats',
+            label = locale('options.vehicleseats'),
+            icon = 'chair',
+            menu = 'vehicleSeatsMenu'
+        }
+    end
+    if config.enableExtraMenu then
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehicleExtras',
+            label = locale('options.vehicleextras'),
+            icon = 'plus',
+            menu = 'vehicleExtrasMenu'
+        }
+    end
+    if config.enableDoorsMenu then
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehicleDoors',
+            label = locale('options.vehicledoors'),
+            icon = 'car-side',
+            menu = 'vehicleDoorsMenu'
+        }
+    end
+    if config.enableTrunkOptions then
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehicleGetInTrunk',
+            label = locale("options.getintrunk"),
+            icon = 'truck-ramp-box',
+            onSelect = function()
+                TriggerEvent('qbx_vehiclefeatures:client:getInTrunk')
+            end,
+        }
+        -- TODO: Add kidnapping item
+    end
     lib.registerRadial({
         id = 'vehicleMenu',
         items = vehicleItems
@@ -247,58 +247,58 @@ local function setupVehicleMenu()
 end
 
 local function setupFlipTarget()
-	exports.ox_target:addGlobalVehicle({
-		{
-			name = 'qbx_vehiclefeatures:flipvehicle',
-			icon = 'fa-solid fa-car-burst',
-			label = locale('targets.flip'),
-			distance = 2,
-			onSelect = function(data)
-				flipVehicle()
-			end
-		}
-	})
+    exports.ox_target:addGlobalVehicle({
+        {
+            name = 'qbx_vehiclefeatures:flipvehicle',
+            icon = 'fa-solid fa-car-burst',
+            label = locale('targets.flip'),
+            distance = 2,
+            onSelect = function(data)
+                flipVehicle()
+            end
+        }
+    })
 end
 
 if config.enableSeatsMenu then
-	lib.onCache('vehicle', function(v)
-		SetupVehicleSeats(v)
-	end)
+    lib.onCache('vehicle', function(v)
+        SetupVehicleSeats(v)
+    end)
 end
 
 AddEventHandler('onResourceStart', function(resource)
     if cache.resource ~= resource then return end
-	if config.enableTargets and config.enableFlipVehicle then
-		setupFlipTarget()
-	end
-	if not config.enableRadialMenu then return end
+    if config.enableTargets and config.enableFlipVehicle then
+        setupFlipTarget()
+    end
+    if not config.enableRadialMenu then return end
     if LocalPlayer.state.isLoggedIn then
-		if config.enableSeatsMenu then
-			SetupVehicleSeats()
-		end
-		if config.enableExtraMenu then
-			SetupVehicleExtras()
-		end
-		if config.enableDoorsMenu then
-			SetupVehicleDoors()
-		end
+        if config.enableSeatsMenu then
+            SetupVehicleSeats()
+        end
+        if config.enableExtraMenu then
+            SetupVehicleExtras()
+        end
+        if config.enableDoorsMenu then
+            SetupVehicleDoors()
+        end
         setupVehicleMenu()
     end
 end)
 
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
-	if config.enableTargets and config.enableFlipVehicle then
-		setupFlipTarget()
-	end
-	if not config.enableRadialMenu then return end
-	if config.enableSeatsMenu then
-		SetupVehicleSeats()
-	end
-	if config.enableExtraMenu then
-		SetupVehicleExtras()
-	end
-	if config.enableDoorsMenu then
-		SetupVehicleDoors()
-	end
+    if config.enableTargets and config.enableFlipVehicle then
+        setupFlipTarget()
+    end
+    if not config.enableRadialMenu then return end
+    if config.enableSeatsMenu then
+        SetupVehicleSeats()
+    end
+    if config.enableExtraMenu then
+        SetupVehicleExtras()
+    end
+    if config.enableDoorsMenu then
+        SetupVehicleDoors()
+    end
     setupVehicleMenu()
 end)
