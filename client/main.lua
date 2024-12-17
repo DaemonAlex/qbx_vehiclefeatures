@@ -1,5 +1,6 @@
 local config = require 'config.client'
 
+---@param extra number
 local function setExtra(extra)
     if cache.vehicle ~= nil then
         if cache.seat == -1 then
@@ -21,6 +22,8 @@ local function setExtra(extra)
     end
 end
 
+---@param id number
+---@param label string
 local function changeSeat(id, label)
     local isSeatFree = IsVehicleSeatFree(cache.vehicle, id - 2)
     local speed = GetEntitySpeed(cache.vehicle)
@@ -44,6 +47,7 @@ local function changeSeat(id, label)
     exports.qbx_core:Notify(locale('info.switched_seats', label))
 end
 
+---@param door number
 local function doorControl(door)
     local coords = GetEntityCoords(cache.ped)
     local closestVehicle = cache.vehicle or lib.getClosestVehicle(coords, 5.0, false)
@@ -103,6 +107,7 @@ local function flipVehicle()
     end
 end
 
+---@param vehicle number
 local function SetupVehicleSeats(vehicle)
     lib.removeRadialItem('vehicleSeatsMenu')
     local vehicleSeats = {}
@@ -226,13 +231,28 @@ local function setupVehicleMenu()
     if config.enableTrunkOptions then
         vehicleItems[#vehicleItems + 1] = {
             id = 'vehicleGetInTrunk',
-            label = locale("options.getintrunk"),
+            label = locale('options.getintrunk'),
             icon = 'truck-ramp-box',
             onSelect = function()
-                TriggerEvent('qbx_vehiclefeatures:client:getInTrunk')
-            end,
+                TriggerEvent('qbx_vehiclefeatures:client:getInTrunk', false)
+            end
         }
-        -- TODO: Add kidnapping item
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehiclePutInTrunk',
+            label = locale('options.putintrunk'),
+            icon = 'truck-ramp-box',
+            onSelect = function()
+                TriggerEvent('qbx_vehiclefeatures:client:getInTrunk', true)
+            end
+        }
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehicleGetOutTrunk',
+            label = locale('options.getouttrunk'),
+            icon = 'truck-ramp-box',
+            onSelect = function()
+                TriggerEvent('qbx_vehiclefeatures:client:getOutTrunk')
+            end
+        }
     end
     lib.registerRadial({
         id = 'vehicleMenu',
@@ -266,6 +286,7 @@ if config.enableSeatsMenu then
     end)
 end
 
+---@param resource string
 AddEventHandler('onResourceStart', function(resource)
     if cache.resource ~= resource then return end
     if config.enableTargets and config.enableFlipVehicle then

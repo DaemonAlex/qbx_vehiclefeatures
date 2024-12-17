@@ -45,3 +45,17 @@ The configuration file allows you to customize various aspects of the qbx_vehicl
 - customOffset (table): Specifies custom trunk offsets for vehicles that require adjustments.
 - trunkDisabled (table): List of vehicle models where trunk interactions are disabled.
 - classDisabled (table): Disables trunk interactions based on vehicle class.
+
+# Statebags
+- insideTrunk (boolean): Indicates if the player is inside a trunk.
+- isKidnapped (boolean): Tracks if the player is kidnapped (e.g., being carried or escorted).
+
+isKidnapped state does have backwards compatibility for **qb-kidnapping:client:SetKidnapping**
+
+# Work-in-Progress (WIP)
+This resource is currently a Work-in-Progress, as functionalities may change frequently due to ongoing updates within the Qbox framework.
+
+- Police Job
+The police job system is also still in development. It includes core functionalities like: Handcuffing, Carrying, Escorting.
+
+**These features may be expanded with exports or additional statebags to improve functionality for this script. Currently, we do not check whether the person placing someone in the trunk is escorting or carrying them.**

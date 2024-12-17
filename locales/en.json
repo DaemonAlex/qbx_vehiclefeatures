@@ -33,7 +33,8 @@
       "close_trunk_button": "[G] Close the trunk",
       "open_trunk_button": "[G] Open the trunk",
       "getintrunk_command_desc": "Get in trunk",
-      "putintrunk_command_desc": "Put player in trunk"
+      "putintrunk_command_desc": "Put person in the trunk",
+      "getouttrunk_command_desc": "Get person out of the trunk"
     },
     "options": {
       "flip": "Flip Vehicle",
@@ -46,7 +47,8 @@
       "vehicleseats": "Vehicle Seats",
       "vehicleextras": "Vehicle Extras",
       "getintrunk": "Get In Trunk",
-      "putintrunk": "Put Person In Trunk",
+      "putintrunk": "Put In Trunk",
+      "getouttrunk": "Get Out Of Trunk",
       "vehicledoors": "Vehicle Doors",
       "driver_door": "Driver's Door",
       "passenger_door": "Passenger's Door",
@@ -58,6 +60,7 @@
     "targets": {
         "getintrunk": "Get In Trunk",
         "putintrunk": "Put Person In Trunk",
+        "getouttrunk": "Get Person Out Of Trunk",
         "flip": "Flip Vehicle"
     }
 }

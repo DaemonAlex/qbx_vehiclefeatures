@@ -9,7 +9,7 @@ return {
     enableFlipVehicle = true,  -- Enable or disable the flip vehicle option.
     enableTrunkOptions = true,  -- Enable or disable the trunk hide/kidnap radial options.
     enableTargets = true, -- Enable or disable target options for trunk hide/kidnap and flip vehicle.
-	drawText3dTrunk = true, -- Enable or disable the drawText3d for showing how to open and exit the trunk.
+    drawText3dTrunk = true, -- Enable or disable the drawText3d for showing how to open and exit the trunk.
     flipVehicleTime = 15000, -- Time it takes to flip a vehicle.
     allowedSeatSpeed = 100.0, -- Switching seats while driving under the set kmh is allowed.
     allowedTrunkSpeed = 50.0, -- Jumping out the trunk while driving under the set kmh is allowed.

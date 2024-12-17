@@ -33,7 +33,8 @@
       "close_trunk_button": "[G] Sluit de kofferbak",
       "open_trunk_button": "[G] Open de kofferbak",
       "getintrunk_command_desc": "Ga in de kofferbak",
-      "putintrunk_command_desc": "Stop persoon in kofferbak"
+      "putintrunk_command_desc": "Stop persoon in kofferbak",
+      "getouttrunk_command_desc": "Haal persoon uit de kofferbak"
     },
     "options": {
       "flip": "Voertuig Flippen",
@@ -46,7 +47,8 @@
       "vehicleseats": "Voertuigstoelen",
       "vehicleextras": "Voertuig Extra's",
       "getintrunk": "Ga in de Kofferbak",
-      "putintrunk": "Stop Persoon in Kofferbak",
+      "putintrunk": "Stop in Kofferbak",
+      "getouttrunk": "Haal uit kofferbak",
       "vehicledoors": "Voertuigdeuren",
       "driver_door": "Bestuurdersdeur",
       "passenger_door": "Passagiersdeur",
@@ -57,7 +59,8 @@
     },
     "targets": {
         "getintrunk": "Stap in kofferbak",
-        "putintrunk": "Stop Persoon in Kofferbak",
+        "putintrunk": "Stop persoon in kofferbak",
+        "getouttrunk": "Haal persoon uit kofferbak",
         "flip": "Voertuig Flippen"
     }
 }
