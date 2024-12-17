@@ -10,7 +10,7 @@ qbx_vehiclefeatures is a FiveM resource designed to enhance vehicle-related game
 
 **Trunk Interactions**:
 - Hide inside the trunk of a vehicle.
-- Place others inside the trunk *(kidnapping functionality under development)*.
+- Place others inside the trunk.
 
 **Realistic Trunk Positioning**: Players are positioned correctly within the trunk based on vehicle dimensions for a realistic fit.
 
@@ -51,6 +51,7 @@ The configuration file allows you to customize various aspects of the qbx_vehicl
 - isKidnapped (boolean): Tracks if the player is kidnapped (e.g., being carried or escorted).
 
 isKidnapped state does have backwards compatibility for **qb-kidnapping:client:SetKidnapping**
+**It is not sure if this state (isKidnapped) will be used in future updates.**
 
 # Work-in-Progress (WIP)
 This resource is currently a Work-in-Progress, as functionalities may change frequently due to ongoing updates within the Qbox framework.
