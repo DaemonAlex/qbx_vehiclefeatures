@@ -217,8 +217,7 @@ local function putInTrunk()
         backOffset = backOffset + customOffset.backOffset
         heightOffset = heightOffset + customOffset.heightOffset
     end
-    local attachOffset = vec3(leftOffset, backOffset, heightOffset)
-    AttachEntityToEntity(cache.ped, lastVehicle, -1, attachOffset.x, attachOffset.y, attachOffset.z, 15.0, 5.0, 55.0, true, true, false, true, 1, true)
+    AttachEntityToEntity(cache.ped, lastVehicle, -1, leftOffset, backOffset, heightOffset, 15.0, 5.0, 55.0, true, true, false, true, 1, true)
     if not config.pedVisible then
         SetEntityVisible(cache.ped, false, false)
     end

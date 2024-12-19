@@ -29,6 +29,31 @@ return {
             backOffset = 0.4,
             heightOffset = -0.05
         },
+        [`blista`] = {
+            leftOffset = 0.0,
+            backOffset = -0.1,
+            heightOffset = -0.3
+        },
+    },
+    visualItemsInTrunk = true, -- Allow visual items in the trunk if someone puts an item in the trunk stash.
+    defaultTrunkItem = `prop_cs_cardbox_01`, -- The default item used in the trunk if no trunkModels are found.
+    trunkItems = { -- You could add more if you want more visual items inside of the trunk, current positions are based on default item.
+        [1] = {
+            leftOffset = -0.1,
+            backOffset = 0.0,
+            heightOffset = 0.0
+        },
+        [2] = {
+            leftOffset = 0.33,
+            backOffset = 0.0,
+            heightOffset = 0.0
+        }
+    },
+    trunkModels = { -- Set which items are visual besides the default one, these items have priority as does the threshold.
+        ['money'] = {
+            { threshold = 1, model = `h4_prop_h4_cash_stack_02a` },
+            { threshold = 500, model = `h4_prop_h4_cash_stack_01a` }
+        },
     },
     trunkDisabled = { -- Add any vehicle that is not allowed to hide inside the boot.
         `penetrator`,
