@@ -3,7 +3,7 @@ game 'gta5'
 
 description 'qbx_vehiclefeatures'
 repository 'https://github.com/0Programmer/qbx_vehiclefeatures'
-version '1.2.0'
+version '1.2.1'
 author '0Programmer'
 
 ox_lib 'locale'
