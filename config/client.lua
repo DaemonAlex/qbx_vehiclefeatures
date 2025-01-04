@@ -2,13 +2,17 @@ return {
     pedVisible = true, -- If true you can see the player inside the vehicle boot.
     canCamMove = true, -- Allows the camera to move around the vehicle with a small radius for zooming in/out.
     barPeeking = true, -- Adds 2 bars top and bottom so you have a peeking effect.
-    enableRadialMenu = true, -- Enable or disable the whole radial menu options.
-    enableSeatsMenu = true, -- Enable or disable the vehicle seat switch menu.
-    enableExtraMenu = true, -- Enable or disable the vehicle extras menu.
-    enableDoorsMenu = true, -- Enable or disable the vehicle doors menu.
-    enableFlipVehicle = true,  -- Enable or disable the flip vehicle option.
-    enableTrunkOptions = true,  -- Enable or disable the trunk hide/kidnap radial options.
-    enableTargets = true, -- Enable or disable target options for trunk hide/kidnap and flip vehicle.
+    enableRadialMenu = true, -- Enable or disable all radial menu options.
+    enableSeatsMenu = true, -- Enable or disable the vehicle seat switch radial menu option.
+    enableExtraMenu = true, -- Enable or disable the vehicle extras radial menu option.
+    enableDoorsMenu = true, -- Enable or disable the vehicle doors radial menu option.
+	enableFlipMenu = true, -- Enable or disable the vehicle flip radial menu option.
+	enablePushMenu = true, -- Enable or disable the vehicle push radial menu option.
+	enableTrunkMenu = true, -- Enable or disable the trunk hide/kidnap radial menu options.
+	enableTargets = true, -- Enable or disable all target options.
+    enableFlipTarget = true, -- Enable or disable the vehicle flip target option.
+	enablePushTarget = true, -- Enable or disable the vehicle push target option.
+	enableTrunkTarget = true, -- Enable or disable the trunk hide/kidnap target options.
     drawText3dTrunk = true, -- Enable or disable the drawText3d for showing how to open and exit the trunk.
     flipVehicleTime = 15000, -- Time it takes to flip a vehicle.
     allowedSeatSpeed = 100.0, -- Switching seats while driving under the set kmh is allowed.
@@ -51,8 +55,20 @@ return {
     },
     trunkModels = { -- Set which items are visual besides the default one, these items have priority as does the threshold.
         ['money'] = {
-            { threshold = 1, model = `h4_prop_h4_cash_stack_02a` },
-            { threshold = 500, model = `h4_prop_h4_cash_stack_01a` }
+            {
+				threshold = 1,
+				model = `h4_prop_h4_cash_stack_02a`,
+				pitchOffset = 0.0,
+				RollOffset = 0.0,
+				yawOffset = 0.0,
+			},
+            {
+				threshold = 500,
+				model = `h4_prop_h4_cash_stack_01a`,
+				pitchOffset = 0.0,
+				RollOffset = 0.0,
+				yawOffset = 0.0,
+			}
         },
     },
     trunkDisabled = { -- Add any vehicle that is not allowed to hide inside the boot.

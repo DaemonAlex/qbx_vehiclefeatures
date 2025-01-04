@@ -58,7 +58,6 @@ end, {
 ---@param playerId number
 ---@param inventoryId string|number
 AddEventHandler('ox_inventory:openedInventory', function(playerId, inventoryId)
-    print('openedInventory')
     if type(inventoryId) ~= 'string' then return end
     if inventoryId:sub(1, 5) == 'trunk' then
         local plate = inventoryId:match('trunk(.*)')
@@ -88,4 +87,19 @@ end)
 AddEventHandler('entityRemoved', function(entity)
     if not Entity(entity).state.trunkHasItems then return end
     Entity(entity).state:set('trunkHasItems', nil, true)
+end)
+
+---@param bagName string
+AddStateBagChangeHandler('vehicleid', '', function(bagName)
+    local vehicle = GetEntityFromStateBagName(bagName)
+    if not vehicle or vehicle == 0 then return end
+	local plate = GetVehicleNumberPlateText(vehicle)
+	local inventory = exports.ox_inventory:GetInventory('trunk'..plate, false)
+	if inventory then
+		local items = {}
+        for _, item in pairs(inventory.items) do
+            items[item.name] = item.count
+        end
+		Entity(vehicle).state:set('trunkHasItems', items or nil, true)
+	end
 end)

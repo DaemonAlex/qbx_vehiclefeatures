@@ -361,7 +361,7 @@ AddEventHandler('onResourceStart', function(resource)
     if LocalPlayer.state.isLoggedIn then
         LocalPlayer.state:set('insideTrunk', false, true)
         LocalPlayer.state:set('isKidnapped', false, true)
-        if config.enableTargets then
+        if config.enableTargets and config.enableTrunkTarget then
             setupTrunkTargets()
         end
     end
@@ -370,7 +370,7 @@ end)
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
     LocalPlayer.state:set('insideTrunk', false, true)
     LocalPlayer.state:set('isKidnapped', false, true)
-    if config.enableTargets then
+    if config.enableTargets and config.enableTrunkTarget then
         setupTrunkTargets()
     end
 end)

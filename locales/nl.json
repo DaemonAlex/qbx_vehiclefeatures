@@ -13,9 +13,11 @@
       "already_in_trunk": "Je zit al in de kofferbak",
       "cancel_task": "Geannuleerd",
       "someone_in_trunk": "Er zit al iemand in de kofferbak",
-      "no_vehicle_nearby": "Geen voertuig in de buurt om te flippen",
+      "no_vehicle_nearby": "Geen voertuig in de buurt om deze actie te doen",
       "seat_occupied": "Er zit al iemand op deze stoel",
-      "not_in_vehicle": "Je moet in een voertuig zitten om dit te doen"
+      "not_in_vehicle": "Je moet in een voertuig zitten om dit te doen",
+	  "driver_occupied": "Er zit iemand in de bestuurdersstoel",
+	  "vehicle_locked": "De handrem van het voertuig is actief"
     },
     "info": {
         "switched_seats": "Wissel naar %s"
@@ -38,6 +40,7 @@
     },
     "options": {
       "flip": "Voertuig Flippen",
+	  "push": "Voertuig Duwen",
       "vehicle": "Voertuigopties",
       "driver_seat": "Bestuurdersstoel",
       "passenger_seat": "Passagiersstoel",
@@ -61,6 +64,7 @@
         "getintrunk": "Stap in kofferbak",
         "putintrunk": "Stop persoon in kofferbak",
         "getouttrunk": "Haal persoon uit kofferbak",
-        "flip": "Voertuig Flippen"
+        "flip": "Voertuig Flippen",
+		"push": "Voertuig Duwen"
     }
 }

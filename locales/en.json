@@ -13,9 +13,11 @@
       "already_in_trunk": "You are already in the trunk",
       "cancel_task": "Task cancelled",
       "someone_in_trunk": "Someone is already in the trunk",
-      "no_vehicle_nearby": "No vehicle nearby for flipping",
+      "no_vehicle_nearby": "No vehicle nearby to do this action",
       "seat_occupied": "There is someone in this seat already",
-      "not_in_vehicle": "You need to be in a vehicle to do this"
+      "not_in_vehicle": "You need to be in a vehicle to do this",
+	  "driver_occupied": "There is someone in the driver seat",
+	  "vehicle_locked": "The vehicle handbrake is on"
     },
     "info": {
         "switched_seats": "Switched to %s"
@@ -38,6 +40,7 @@
     },
     "options": {
       "flip": "Flip Vehicle",
+	  "push": "Push Vehicle",
       "vehicle": "Vehicle Options",
       "driver_seat": "Driver's Seat",
       "passenger_seat": "Passenger Seat",
@@ -61,6 +64,7 @@
         "getintrunk": "Get In Trunk",
         "putintrunk": "Put Person In Trunk",
         "getouttrunk": "Get Person Out Of Trunk",
-        "flip": "Flip Vehicle"
+        "flip": "Flip Vehicle",
+		"push": "Push Vehicle"
     }
 }

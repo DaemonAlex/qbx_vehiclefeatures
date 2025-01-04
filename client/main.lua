@@ -81,7 +81,7 @@ end
 local function flipVehicle()
     if cache.vehicle then return end
     local coords = GetEntityCoords(cache.ped)
-    local vehicle = lib.getClosestVehicle(coords)
+    local vehicle = lib.getClosestVehicle(coords, 5.0, false)
     if not vehicle then return exports.qbx_core:Notify(locale('error.no_vehicle_nearby'), 'error') end
     if lib.progressBar({
         label = locale('progress.flipping_car'),
@@ -95,8 +95,8 @@ local function flipVehicle()
             combat = true
         },
         anim = {
-            dict = 'mini@repair',
-            clip = 'fixing_a_ped'
+            dict = 'missfinale_c2ig_11',
+            clip = 'pushcar_offcliff_f'
         },
     })
     then
@@ -105,6 +105,73 @@ local function flipVehicle()
     else
         exports.qbx_core:Notify(locale('error.cancel_task'), 'error')
     end
+end
+
+local function pushVehicle()
+	if cache.vehicle then return end
+    local coords = GetEntityCoords(cache.ped)
+    local vehicle = lib.getClosestVehicle(coords, 5.0, false)
+    if not vehicle then return exports.qbx_core:Notify(locale('error.no_vehicle_nearby'), 'error') end
+	if GetIsVehicleEngineRunning(vehicle) then return end
+	if IsEntityUpsidedown(vehicle) then return end
+	if GetVehicleDoorLockStatus(vehicle) == 2 then return exports.qbx_core:Notify(locale('error.vehicle_locked'), 'error') end
+	if not IsVehicleSeatFree(vehicle, -1) then return exports.qbx_core:Notify(locale('error.seat_occupied'), 'error') end
+	local getFront = #(GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, 'wheel_rr')) - coords) > #(GetWorldPositionOfEntityBone(vehicle, GetEntityBoneIndexByName(vehicle, 'wheel_rf')) - coords)
+	local dimension = GetModelDimensions(GetEntityModel(vehicle), vector3(0.0, 0.0, 0.0), vector3(5.0, 5.0, 5.0))
+	if getFront then
+		AttachEntityToEntity(cache.ped, vehicle, GetPedBoneIndex(6286), 0.0, dimension.y * -1 + 0.1 , dimension.z + 1.0, 0.0, 0.0, 180.0, 0.0, false, false, true, false, true)
+	else
+		AttachEntityToEntity(cache.ped, vehicle, GetPedBoneIndex(6286), 0.0, dimension.y - 0.3, dimension.z  + 1.0, 0.0, 0.0, 0.0, 0.0, false, false, true, false, true)
+	end
+	lib.requestAnimDict('missfinale_c2ig_11')
+	lib.requestAnimDict('rcmjosh2')
+	TaskPlayAnim(cache.ped, 'missfinale_c2ig_11', 'pushcar_offcliff_m', 2.0, -8.0, -1, 35, 0, 0, 0, 0)
+	Wait(200)
+	local currentVehicle = vehicle
+	while true do
+		if not IsEntityAttached(cache.ped) or not DoesEntityExist(currentVehicle) then
+			DetachEntity(cache.ped, false, false)
+			StopAnimTask(cache.ped, 'rcmjosh2', 'stand_lean_back_beckon_b', 2.0)
+			StopAnimTask(cache.ped, 'missfinale_c2ig_11', 'pushcar_offcliff_m', 2.0)
+			FreezeEntityPosition(cache.ped, false)
+			break
+		end
+		Wait(5)
+		if IsControlPressed(0, 34) then -- A
+			TaskVehicleTempAction(cache.ped, currentVehicle, 11, 1000)
+		end
+		if IsControlPressed(0, 9) then -- D
+			TaskVehicleTempAction(cache.ped, currentVehicle, 10, 1000)
+		end
+		if IsControlPressed(0, 71) then -- W
+			if IsEntityPlayingAnim(cache.ped, 'rcmjosh2', 'stand_lean_back_beckon_b', 3) then
+				StopAnimTask(cache.ped, 'rcmjosh2', 'stand_lean_back_beckon_b', 2.0)
+				TaskPlayAnim(cache.ped, 'missfinale_c2ig_11', 'pushcar_offcliff_m', 2.0, -8.0, -1, 35, 0, 0, 0, 0)
+			end
+			if getFront then
+				SetVehicleForwardSpeed(currentVehicle, -1.0)
+			else
+				SetVehicleForwardSpeed(currentVehicle, 1.0)
+			end
+		else
+			if IsEntityPlayingAnim(cache.ped, 'missfinale_c2ig_11', 'pushcar_offcliff_m', 3) then
+				StopAnimTask(cache.ped, 'missfinale_c2ig_11', 'pushcar_offcliff_m', 2.0)
+				TaskPlayAnim(cache.ped, 'rcmjosh2', 'stand_lean_back_beckon_b', 2.0, -8.0, -1, 35, 0, 0, 0, 0)
+			end
+		end
+		if HasEntityCollidedWithAnything(currentVehicle) then
+			SetVehicleOnGroundProperly(currentVehicle)
+		end
+		if IsControlPressed(0, 25) or IsControlPressed(0, 48) or IsControlPressed(0, 73) then -- RIGHT MOUSE BUTTON, Z, X
+			DetachEntity(cache.ped, false, false)
+			StopAnimTask(cache.ped, 'rcmjosh2', 'stand_lean_back_beckon_b', 2.0)
+			StopAnimTask(cache.ped, 'missfinale_c2ig_11', 'pushcar_offcliff_m', 2.0)
+			FreezeEntityPosition(cache.ped, false)
+			break
+		end
+	end
+	RemoveAnimDict('missfinale_c2ig_11')
+	RemoveAnimDict('rcmjosh2')
 end
 
 ---@param vehicle number
@@ -194,13 +261,23 @@ end
 
 local function setupVehicleMenu()
     local vehicleItems = {}
-    if config.enableFlipVehicle then
+    if config.enableFlipMenu then
         vehicleItems[#vehicleItems + 1] = {
             id = 'vehicleFlip',
             label = locale('options.flip'),
             icon = 'car-burst',
             onSelect = function()
                 flipVehicle()
+            end,
+        }
+    end
+	if config.enablePushMenu then
+        vehicleItems[#vehicleItems + 1] = {
+            id = 'vehiclePush',
+            label = locale('options.push'),
+            icon = 'fa-arrow-down-up-across-line',
+            onSelect = function()
+                pushVehicle()
             end,
         }
     end
@@ -228,7 +305,7 @@ local function setupVehicleMenu()
             menu = 'vehicleDoorsMenu'
         }
     end
-    if config.enableTrunkOptions then
+    if config.enableTrunkMenu then
         vehicleItems[#vehicleItems + 1] = {
             id = 'vehicleGetInTrunk',
             label = locale('options.getintrunk'),
@@ -280,6 +357,20 @@ local function setupFlipTarget()
     })
 end
 
+local function setupPushTarget()
+    exports.ox_target:addGlobalVehicle({
+        {
+            name = 'qbx_vehiclefeatures:pushvehicle',
+            icon = 'fas fa-arrow-down-up-across-line',
+            label = locale('targets.push'),
+            distance = 2,
+            onSelect = function(data)
+                pushVehicle()
+            end
+        }
+    })
+end
+
 if config.enableSeatsMenu then
     lib.onCache('vehicle', function(v)
         SetupVehicleSeats(v)
@@ -289,8 +380,9 @@ end
 ---@param resource string
 AddEventHandler('onResourceStart', function(resource)
     if cache.resource ~= resource then return end
-    if config.enableTargets and config.enableFlipVehicle then
-        setupFlipTarget()
+    if config.enableTargets then
+		if config.enableFlipTarget then setupFlipTarget() end
+		if config.enablePushTarget then setupPushTarget() end
     end
     if not config.enableRadialMenu then return end
     if LocalPlayer.state.isLoggedIn then
@@ -308,8 +400,9 @@ AddEventHandler('onResourceStart', function(resource)
 end)
 
 AddEventHandler('QBCore:Client:OnPlayerLoaded', function()
-    if config.enableTargets and config.enableFlipVehicle then
-        setupFlipTarget()
+    if config.enableTargets then
+		if config.enableFlipTarget then setupFlipTarget() end
+		if config.enablePushTarget then setupPushTarget() end
     end
     if not config.enableRadialMenu then return end
     if config.enableSeatsMenu then

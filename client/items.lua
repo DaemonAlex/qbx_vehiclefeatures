@@ -20,17 +20,17 @@ end
 local function getItemModel(name, amount)
     local itemConfig = config.trunkModels[name]
     if not itemConfig then
-        return config.defaultTrunkItem
+        return {model = config.defaultTrunkItem}
     end
     table.sort(itemConfig, function(a, b)
         return a.threshold > b.threshold
     end)
     for _, v in ipairs(itemConfig) do
         if amount >= v.threshold then
-            return v.model
+            return v
         end
     end
-    return config.defaultTrunkItem
+    return {model = config.defaultTrunkItem}
 end
 
 ---@param items table
@@ -62,22 +62,23 @@ local function createAllObjects(vehicle, items, currentTable)
     for item, count in pairs(prioritizedItems) do
         amount = amount + 1
         if amount >= #config.trunkItems + 1 then break end
-        local model = getItemModel(item, count)
-        lib.requestModel(model, 1000)
-        local object = CreateObject(model, 0.0, 0.0, 0.0, false, false, false)
-        SetModelAsNoLongerNeeded(model)
+        local itemData = getItemModel(item, count)
+        lib.requestModel(itemData.model, 1000)
+        local object = CreateObject(itemData.model, 0.0, 0.0, 0.0, false, false, false)
+        SetModelAsNoLongerNeeded(itemData.model)
         SetEntityCollision(object, false, false)
         local vehModel = GetEntityModel(vehicle)
         local min, max = GetModelDimensions(vehModel)
         local trunkItemsOffset = config.trunkItems[amount]
         local leftOffset, backOffset, heightOffset = trunkItemsOffset.leftOffset + -0.1, trunkItemsOffset.backOffset + min.y + 0.8, trunkItemsOffset.heightOffset + 0.22
+		local pitchOffset, RollOffset, yawOffset = itemData?.pitchOffset or 0.0, itemData?.RollOffset or 0.0, itemData?.yawOffset or 0.0
         local customOffset = config.customOffset[vehModel]
         if customOffset then
             leftOffset = leftOffset + customOffset.leftOffset
             backOffset = backOffset + customOffset.backOffset
             heightOffset = heightOffset + customOffset.heightOffset
         end
-        AttachEntityToEntity(object, vehicle, -1, leftOffset, backOffset, heightOffset, 0.0, 0.0, 0.0, true, true, true, false, 1, true)
+        AttachEntityToEntity(object, vehicle, -1, leftOffset, backOffset, heightOffset, pitchOffset, RollOffset, yawOffset, true, true, true, false, 1, true)
         currentTable[amount] = {
             name = item,
             entity = object,
