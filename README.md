@@ -3,6 +3,8 @@ qbx_vehiclefeatures is a FiveM resource designed to enhance vehicle-related game
 
 # Features
 - **Seat Switching**: Change seats dynamically while inside a vehicle using a radial menu.
+- **Door Controls**: Open and close vehicle doors.
+- **Window Controls**: Open and close vehicle windows.
 - **Vehicle Extras Management**: Toggle specific vehicle extras on or off.
 - **Vehicle Flipping**: Flip an overturned vehicle back onto its wheels.
 - **Vehicle Pushing**: Push stuck vehicles.
@@ -26,6 +28,7 @@ The configuration file allows you to customize various aspects of the qbx_vehicl
 **Radial Menu Options**
 - `enableRadialMenu` (boolean): Enables or disables the entire radial menu functionality.
 - `enableSeatsMenu` (boolean): Toggles the seat-switching menu.
+- `enableWindowsMenu` (boolean): Toggles the vehicle windows menu.
 - `enableExtraMenu` (boolean): Toggles the vehicle extras menu.
 - `enableDoorsMenu` (boolean): Toggles the vehicle doors menu.
 - `enableFlipMenu` (boolean): Toggles the option to flip overturned vehicles.

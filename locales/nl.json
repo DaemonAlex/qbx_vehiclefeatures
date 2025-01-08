@@ -16,8 +16,8 @@
       "no_vehicle_nearby": "Geen voertuig in de buurt om deze actie te doen",
       "seat_occupied": "Er zit al iemand op deze stoel",
       "not_in_vehicle": "Je moet in een voertuig zitten om dit te doen",
-	  "driver_occupied": "Er zit iemand in de bestuurdersstoel",
-	  "vehicle_locked": "De handrem van het voertuig is actief"
+      "driver_occupied": "Er zit iemand in de bestuurdersstoel",
+      "vehicle_locked": "De handrem van het voertuig is actief"
     },
     "info": {
         "switched_seats": "Wissel naar %s"
@@ -40,7 +40,7 @@
     },
     "options": {
       "flip": "Voertuig Flippen",
-	  "push": "Voertuig Duwen",
+      "push": "Voertuig Duwen",
       "vehicle": "Voertuigopties",
       "driver_seat": "Bestuurdersstoel",
       "passenger_seat": "Passagiersstoel",
@@ -57,6 +57,11 @@
       "passenger_door": "Passagiersdeur",
       "rear_left_door": "Achterdeur Links",
       "rear_right_door": "Achterdeur Rechts",
+      "vehiclewindows": "Voertuigramen",
+      "driver_window": "Bestuurdersraam",
+      "passenger_window": "Passagiersraam",
+      "rear_left_window": "Achterlinks Raam",
+      "rear_right_window": "Achterrechts Raam",
       "hood_door": "Motorkap",
       "trunk_door": "Kofferbak"
     },
@@ -65,6 +70,6 @@
         "putintrunk": "Stop persoon in kofferbak",
         "getouttrunk": "Haal persoon uit kofferbak",
         "flip": "Voertuig Flippen",
-		"push": "Voertuig Duwen"
+        "push": "Voertuig Duwen"
     }
 }

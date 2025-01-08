@@ -71,7 +71,7 @@ local function createAllObjects(vehicle, items, currentTable)
         local min, max = GetModelDimensions(vehModel)
         local trunkItemsOffset = config.trunkItems[amount]
         local leftOffset, backOffset, heightOffset = trunkItemsOffset.leftOffset + -0.1, trunkItemsOffset.backOffset + min.y + 0.8, trunkItemsOffset.heightOffset + 0.22
-		local pitchOffset, RollOffset, yawOffset = itemData?.pitchOffset or 0.0, itemData?.RollOffset or 0.0, itemData?.yawOffset or 0.0
+        local pitchOffset, RollOffset, yawOffset = itemData?.pitchOffset or 0.0, itemData?.RollOffset or 0.0, itemData?.yawOffset or 0.0
         local customOffset = config.customOffset[vehModel]
         if customOffset then
             leftOffset = leftOffset + customOffset.leftOffset

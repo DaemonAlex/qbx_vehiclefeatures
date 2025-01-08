@@ -153,7 +153,7 @@ local function startThreads()
                             if vehicleSpeed < config.allowedTrunkSpeed then
                                 cancelTrunk()
                             else
-                                exports.qbx_core:Notify(locale('error.vehicle_driving_fast'), 'error')
+                                exports.qbx_core:Notify(locale('error.vehicle_driving_fast'), 'error', 2500)
                             end
                         else
                             exports.qbx_core:Notify(locale('error.trunk_closed'), 'error', 2500)

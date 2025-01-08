@@ -89,17 +89,23 @@ AddEventHandler('entityRemoved', function(entity)
     Entity(entity).state:set('trunkHasItems', nil, true)
 end)
 
----@param bagName string
-AddStateBagChangeHandler('vehicleid', '', function(bagName)
-    local vehicle = GetEntityFromStateBagName(bagName)
-    if not vehicle or vehicle == 0 then return end
-	local plate = GetVehicleNumberPlateText(vehicle)
-	local inventory = exports.ox_inventory:GetInventory('trunk'..plate, false)
-	if inventory then
-		local items = {}
+---@param entity number
+local function ensureVehicleItems(entity)
+    if not entity or entity == 0 then return end
+    local plate = GetVehicleNumberPlateText(entity)
+    local inventory = exports.ox_inventory:GetInventory('trunk'..plate, false)
+    if inventory then
+        local items = {}
         for _, item in pairs(inventory.items) do
             items[item.name] = item.count
         end
-		Entity(vehicle).state:set('trunkHasItems', items or nil, true)
-	end
+        Entity(entity).state:set('trunkHasItems', items or nil, true)
+    end
+end
+exports('ensureVehicleItems', ensureVehicleItems)
+
+---@param bagName string
+AddStateBagChangeHandler('vehicleid', '', function(bagName)
+    local vehicle = GetEntityFromStateBagName(bagName)
+    ensureVehicleItems(vehicle)
 end)

@@ -16,8 +16,8 @@
       "no_vehicle_nearby": "No vehicle nearby to do this action",
       "seat_occupied": "There is someone in this seat already",
       "not_in_vehicle": "You need to be in a vehicle to do this",
-	  "driver_occupied": "There is someone in the driver seat",
-	  "vehicle_locked": "The vehicle handbrake is on"
+      "driver_occupied": "There is someone in the driver seat",
+      "vehicle_locked": "The vehicle handbrake is on"
     },
     "info": {
         "switched_seats": "Switched to %s"
@@ -40,7 +40,7 @@
     },
     "options": {
       "flip": "Flip Vehicle",
-	  "push": "Push Vehicle",
+      "push": "Push Vehicle",
       "vehicle": "Vehicle Options",
       "driver_seat": "Driver's Seat",
       "passenger_seat": "Passenger Seat",
@@ -57,6 +57,11 @@
       "passenger_door": "Passenger's Door",
       "rear_left_door": "Back Left Door",
       "rear_right_door": "Back Right Door",
+      "vehiclewindows": "Vehicle Windows",
+      "driver_window": "Driver's Window",
+      "passenger_window": "Passenger's Window",
+      "rear_left_window": "Back Left Window",
+      "rear_right_window": "Back Right Window",
       "hood_door": "Hood",
       "trunk_door": "Trunk"
     },
@@ -65,6 +70,6 @@
         "putintrunk": "Put Person In Trunk",
         "getouttrunk": "Get Person Out Of Trunk",
         "flip": "Flip Vehicle",
-		"push": "Push Vehicle"
+        "push": "Push Vehicle"
     }
 }
