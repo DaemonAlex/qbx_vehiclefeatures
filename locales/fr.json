@@ -1,0 +1,75 @@
+{
+  "error": {
+      "no_vehicle_found": "Aucun véhicule à proximité",
+      "extra_deactivated": "Extra %s a été désactivé",
+      "extra_not_present": "Extra %s n'est pas présent sur le véhicule",
+      "not_driver": "Vous devez être le conducteur du véhicule",
+      "vehicle_driving_fast": "Ce véhicule se déplace trop vite !",
+      "race_harness_on": "Vous avez un harnais de course, vous ne pouvez pas passer changer de siège",
+      "vehicle_seatbelt_on": "Vous avez votre ceinture, vous ne pouvez pas passer changer de siège",
+      "not_kidnapped": "Vous n’avez pas kidnappé cette personne",
+      "trunk_closed": "Le coffre est fermé",
+      "cant_enter_trunk": "Vous ne pouvez pas entrer dans ce coffre",
+      "already_in_trunk": "Vous êtes déjà dans le coffre",
+      "cancel_task": "Action annulée",
+      "someone_in_trunk": "Quelqu'un semble déjà être dans le coffre",
+      "no_vehicle_nearby": "Aucun véhicule à proximité à retourner",
+      "seat_occupied": "Quelqu'un est déjà assis à ce siège",
+      "not_in_vehicle": "Vous devez être dans un véhicule pour faire ceci",
+      "driver_occupied": "Le siège conducteur est occupé",
+      "vehicle_locked": "Le frein à main du véhicule est serré"
+  },
+  "info": {
+      "switched_seats": "Changement de siège pour la place %s"
+  },
+  "progress": {
+      "flipping_car": "Vous retournez le véhicule..."
+  },
+  "success": {
+      "extra_activated": "Extra %s a été activé",
+      "entered_trunk": "Vous êtes dans le coffre",
+      "flipped_car": "Le véhicule a été retourné !"
+  },
+  "general": {
+      "get_out_trunk_button": "[E] Sortir du coffre",
+      "close_trunk_button": "[G] Fermer le coffre",
+      "open_trunk_button": "[G] Ouvrir le coffre",
+      "getintrunk_command_desc": "Entrer dans le coffre",
+      "putintrunk_command_desc": "Mettre une personne dans le coffre",
+      "getouttrunk_command_desc": "Sortir la personne du coffre"
+  },
+  "options": {
+      "flip": "Retourner le véhicule",
+      "push": "Pousser le véhicule",
+      "vehicle": "Options du véhicule",
+      "driver_seat": "Siège conducteur",
+      "passenger_seat": "Siège passager",
+      "other_seats": "Autres sièges",
+      "rear_left_seat": "Siège arrière gauche",
+      "rear_right_seat": "Siège arrière droite",
+      "vehicleseats": "Sièges du véhicule",
+      "vehicleextras": "Extras du véhicule",
+      "getintrunk": "Entrer dans le coffre",
+      "putintrunk": "Mettre dans le coffre",
+      "getouttrunk": "Sortir du coffre",
+      "vehicledoors": "Portes",
+      "driver_door": "Porte conducteur",
+      "passenger_door": "Porter passager avant",
+      "rear_left_door": "Porte arrière gauche",
+      "rear_right_door": "Porte arrière droite",
+      "vehiclewindows": "Fenêtres du véhicule",
+      "driver_window": "Fenêtre conducteur",
+      "passenger_window": "Fenêtre passager",
+      "rear_left_window": "Fenêtre arrière gauche",
+      "rear_right_window": "Fenêtre arrière droite",
+      "hood_door": "Capot",
+      "trunk_door": "Coffre"
+  },
+  "targets": {
+      "getintrunk": "Entrer dans le coffre",
+      "putintrunk": "Mettre la personne dans le coffre",
+      "getouttrunk": "Sortir la personne du coffre",
+      "flip": "Retourner le véhicule",
+      "storage": "Déposer des objets"
+  }
+}
