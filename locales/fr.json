@@ -40,7 +40,7 @@
   },
   "options": {
       "flip": "Retourner le véhicule",
-      "push": "Push Vehicle",
+      "push": "Pousser le véhicule",
       "vehicle": "Options du véhicule",
       "driver_seat": "Siège conducteur",
       "passenger_seat": "Siège passager",
