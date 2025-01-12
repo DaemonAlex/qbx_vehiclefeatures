@@ -62,10 +62,10 @@ Threshold determines which model is displayed based on the quantity in the vehic
 - [Player] `insideTrunk` (boolean): Indicates if the player is inside a trunk.
 - **(DEPRECATED)** [Player] `isKidnapped` (boolean): Tracks if the player is kidnapped (e.g., being carried or escorted).
 
+`isKidnapped` state does have backwards compatibility for **qb-kidnapping:client:SetKidnapping** but will be deprecated in the future.
+
 # Server Export
 - `exports.qbx_vehiclefeatures:ensureVehicleItems(entity)`: For adding the visual items on vehicle spawn if no vehicleid entity statebag is used.
-
-`isKidnapped` state does have backwards compatibility for **qb-kidnapping:client:SetKidnapping** but will be deprecated in the future.
 
 # Work-in-Progress (WIP)
 This resource is currently a Work-in-Progress, as functionalities may change frequently due to ongoing updates within the Qbox framework.

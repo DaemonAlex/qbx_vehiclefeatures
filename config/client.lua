@@ -96,7 +96,7 @@ return {
                     RollOffset = 0.0,
                     yawOffset = 0.0,
                     ignoreTrunkSlots = true, -- Ignore trunkItemSlots (model will be center)
-					heightOffset = -0.1 -- Some models might be a bit large try to ignore those.
+                    heightOffset = -0.1 -- Some models might be a bit large try to ignore those.
                 }
             }
         }

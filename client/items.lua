@@ -88,11 +88,11 @@ local function createAllObjects(vehicle, items, currentTable)
             heightOffset = heightOffset + customOffset.heightOffset
         end
         if itemData?.ignoreTrunkSlots then
-			leftOffset, backOffset, heightOffset = leftOffset - trunkItemsOffset.leftOffset + 0.1, backOffset - trunkItemsOffset.backOffset, heightOffset - trunkItemsOffset.heightOffset
+            leftOffset, backOffset, heightOffset = leftOffset - trunkItemsOffset.leftOffset + 0.1, backOffset - trunkItemsOffset.backOffset, heightOffset - trunkItemsOffset.heightOffset
         end
-		if itemData?.heightOffset then
-			heightOffset = heightOffset + itemData?.heightOffset
-		end
+        if itemData?.heightOffset then
+            heightOffset = heightOffset + itemData?.heightOffset
+        end
         AttachEntityToEntity(object, vehicle, -1, leftOffset, backOffset, heightOffset, pitchOffset, RollOffset, yawOffset, true, true, true, false, 1, true)
         currentTable[amount] = {
             name = v.item,
