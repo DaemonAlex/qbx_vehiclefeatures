@@ -68,7 +68,7 @@ AddEventHandler('ox_inventory:openedInventory', function(playerId, inventoryId)
         local items = {}
         local trunkItems = exports.ox_inventory:GetInventoryItems(inventoryId, false)
         for _, item in pairs(trunkItems) do
-            items[item.name] = item.count
+            items[item.name] = not items[item.name] and item.count or items[item.name] + item.count
         end
         cachedVehicles[inventoryId].items = items
     end
@@ -97,7 +97,7 @@ local function ensureVehicleItems(entity)
     if inventory then
         local items = {}
         for _, item in pairs(inventory.items) do
-            items[item.name] = item.count
+            items[item.name] = not items[item.name] and item.count or items[item.name] + item.count
         end
         Entity(entity).state:set('trunkHasItems', items or nil, true)
     end

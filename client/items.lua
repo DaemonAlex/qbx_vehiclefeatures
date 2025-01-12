@@ -16,9 +16,18 @@ local function removeEntitys(data)
 end
 
 ---@param name string
+local function getModelByName(name)
+    for _, v in ipairs(config.trunkModels) do
+        if v.key == name then
+            return v.data
+        end
+    end
+end
+
+---@param name string
 ---@param amount number
 local function getItemModel(name, amount)
-    local itemConfig = config.trunkModels[name]
+    local itemConfig = getModelByName(name)
     if not itemConfig then
         return {model = config.defaultTrunkItem}
     end
@@ -37,17 +46,17 @@ end
 ---@param maxItems number
 local function getPrioritizedItems(items, maxItems)
     local prioritizedItems, added, amount = {}, {}, 0
-    for itemName, _ in pairs(config.trunkModels) do
-        if items[itemName] and amount < maxItems then
-            prioritizedItems[itemName], added[itemName], amount = items[itemName], true, amount + 1
+    for _, v in ipairs(config.trunkModels) do
+        if items[v.key] and amount <= maxItems then
+            prioritizedItems[#prioritizedItems+1], added[v.key], amount = {item = v.key, count = items[v.key]}, true, amount + 1
         end
     end
     for itemName, itemCount in pairs(items) do
-        if not added[itemName] then
-            prioritizedItems[itemName], amount = itemCount, amount + 1
-        end
         if amount >= maxItems then
             break
+        end
+        if not added[itemName] then
+            prioritizedItems[#prioritizedItems+1], amount = {item = itemName, count = itemCount}, amount + 1
         end
     end
     return prioritizedItems
@@ -58,18 +67,18 @@ end
 ---@param currentTable table
 local function createAllObjects(vehicle, items, currentTable)
     local amount = 0
-    local prioritizedItems = getPrioritizedItems(items, #config.trunkItems)
-    for item, count in pairs(prioritizedItems) do
+    local prioritizedItems = getPrioritizedItems(items, #config.trunkItemSlots)
+    for _, v in ipairs(prioritizedItems) do
         amount = amount + 1
-        if amount >= #config.trunkItems + 1 then break end
-        local itemData = getItemModel(item, count)
+        if amount >= #config.trunkItemSlots + 1 then break end
+        local itemData = getItemModel(v.item, v.count)
         lib.requestModel(itemData.model, 1000)
         local object = CreateObject(itemData.model, 0.0, 0.0, 0.0, false, false, false)
         SetModelAsNoLongerNeeded(itemData.model)
         SetEntityCollision(object, false, false)
         local vehModel = GetEntityModel(vehicle)
         local min, max = GetModelDimensions(vehModel)
-        local trunkItemsOffset = config.trunkItems[amount]
+        local trunkItemsOffset = config.trunkItemSlots[amount]
         local leftOffset, backOffset, heightOffset = trunkItemsOffset.leftOffset + -0.1, trunkItemsOffset.backOffset + min.y + 0.8, trunkItemsOffset.heightOffset + 0.22
         local pitchOffset, RollOffset, yawOffset = itemData?.pitchOffset or 0.0, itemData?.RollOffset or 0.0, itemData?.yawOffset or 0.0
         local customOffset = config.customOffset[vehModel]
@@ -78,9 +87,15 @@ local function createAllObjects(vehicle, items, currentTable)
             backOffset = backOffset + customOffset.backOffset
             heightOffset = heightOffset + customOffset.heightOffset
         end
+        if itemData?.ignoreTrunkSlots then
+			leftOffset, backOffset, heightOffset = leftOffset - trunkItemsOffset.leftOffset + 0.1, backOffset - trunkItemsOffset.backOffset, heightOffset - trunkItemsOffset.heightOffset
+        end
+		if itemData?.heightOffset then
+			heightOffset = heightOffset + itemData?.heightOffset
+		end
         AttachEntityToEntity(object, vehicle, -1, leftOffset, backOffset, heightOffset, pitchOffset, RollOffset, yawOffset, true, true, true, false, 1, true)
         currentTable[amount] = {
-            name = item,
+            name = v.item,
             entity = object,
         }
     end

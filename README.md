@@ -53,7 +53,7 @@ The configuration file allows you to customize various aspects of the qbx_vehicl
 
 **Visual Trunk Items**
 - `defaultTrunkItem` (string): Specifies the default visual item displayed if no specific model is defined in trunkModels.
-- `trunkItems` (table): Defines the positions for visual items inside the trunk. Customize leftOffset, backOffset, and heightOffset for placement.
+- `trunkItemSlots` (table): Defines the positions for visual items inside the trunk. Customize leftOffset, backOffset, and heightOffset for placement.
 - `trunkModels` (table): Specifies item models to display based on the stash item and thresholds. Priority is given to these models over the default.
 
 Threshold determines which model is displayed based on the quantity in the vehicles stash.
@@ -61,6 +61,9 @@ Threshold determines which model is displayed based on the quantity in the vehic
 # Statebags
 - [Player] `insideTrunk` (boolean): Indicates if the player is inside a trunk.
 - **(DEPRECATED)** [Player] `isKidnapped` (boolean): Tracks if the player is kidnapped (e.g., being carried or escorted).
+
+# Server Export
+- `exports.qbx_vehiclefeatures:ensureVehicleItems(entity)`: For adding the visual items on vehicle spawn if no vehicleid entity statebag is used.
 
 `isKidnapped` state does have backwards compatibility for **qb-kidnapping:client:SetKidnapping** but will be deprecated in the future.
 

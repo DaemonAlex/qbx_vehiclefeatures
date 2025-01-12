@@ -39,10 +39,15 @@ return {
             backOffset = -0.1,
             heightOffset = -0.3
         },
+        [`glendale`] = {
+            leftOffset = 0.0,
+            backOffset = -0.2,
+            heightOffset = -0.35
+        },
     },
     visualItemsInTrunk = true, -- Allow visual items in the trunk if someone puts an item in the trunk stash.
     defaultTrunkItem = `prop_cs_cardbox_01`, -- The default item used in the trunk if no trunkModels are found.
-    trunkItems = { -- You could add more if you want more visual items inside of the trunk, current positions are based on default item.
+    trunkItemSlots = { -- You could add more if you want more visual items inside of the trunk, current positions are based on default item.
         [1] = {
             leftOffset = -0.1,
             backOffset = 0.0,
@@ -55,22 +60,46 @@ return {
         }
     },
     trunkModels = { -- Set which items are visual besides the default one, these items have priority as does the threshold.
-        ['money'] = {
-            {
-                threshold = 1,
-                model = `h4_prop_h4_cash_stack_02a`,
-                pitchOffset = 0.0,
-                RollOffset = 0.0,
-                yawOffset = 0.0,
-            },
-            {
-                threshold = 500,
-                model = `h4_prop_h4_cash_stack_01a`,
-                pitchOffset = 0.0,
-                RollOffset = 0.0,
-                yawOffset = 0.0,
+        {
+            key = 'money',
+            data = {
+                {
+                    threshold = 1,
+                    model = `h4_prop_h4_cash_stack_02a`,
+                    pitchOffset = 0.0,
+                    RollOffset = 0.0,
+                    yawOffset = 0.0,
+                },
+                {
+                    threshold = 500,
+                    model = `h4_prop_h4_cash_stack_01a`,
+                    pitchOffset = 0.0,
+                    RollOffset = 0.0,
+                    yawOffset = 0.0,
+                }
             }
         },
+        {
+            key = 'coke_brick',
+            data = {
+                {
+                    threshold = 1,
+                    model = `bkr_prop_coke_cutblock_01`,
+                    pitchOffset = 0.0,
+                    RollOffset = 0.0,
+                    yawOffset = 0.0,
+                },
+                {
+                    threshold = 5,
+                    model = `bkr_prop_coke_block_01a`,
+                    pitchOffset = 0.0,
+                    RollOffset = 0.0,
+                    yawOffset = 0.0,
+                    ignoreTrunkSlots = true, -- Ignore trunkItemSlots (model will be center)
+					heightOffset = -0.1 -- Some models might be a bit large try to ignore those.
+                }
+            }
+        }
     },
     trunkDisabled = { -- Add any vehicle that is not allowed to hide inside the boot.
         `penetrator`,
