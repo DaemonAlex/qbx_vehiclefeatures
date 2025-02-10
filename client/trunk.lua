@@ -248,7 +248,7 @@ local function getInTrunk(kidnapping)
     if kidnapping then
         -- if not LocalPlayer.state?.isEscorting then return exports.qbx_core:Notify(locale('error.not_kidnapped'), 'error', 2500) end
         local TargetPlayer, _, _ = lib.getClosestPlayer(GetEntityCoords(cache.ped), 1.5, false)
-        if TargetPlayer == -1 then return exports.qbx_core:Notify(locale('error.not_kidnapped'), 'error', 2500) end
+        if not TargetPlayer then return exports.qbx_core:Notify(locale('error.not_kidnapped'), 'error', 2500) end
         TriggerServerEvent('qbx_vehiclefeatures:server:kidnapTrunk', NetworkGetNetworkIdFromEntity(lastVehicle), GetPlayerServerId(TargetPlayer))
         return
     end
