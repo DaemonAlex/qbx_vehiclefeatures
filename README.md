@@ -65,7 +65,8 @@ Threshold determines which model is displayed based on the quantity in the vehic
 `isKidnapped` state does have backwards compatibility for **qb-kidnapping:client:SetKidnapping** but will be deprecated in the future.
 
 # Server Export
-- `exports.qbx_vehiclefeatures:ensureVehicleItems(entity)`: For adding the visual items on vehicle spawn if no vehicleid entity statebag is used.
+- `exports.qbx_vehiclefeatures:EnsureVehicleItems(entity)`: For adding the visual items on vehicle spawn if no vehicleid entity statebag is used.
+- `exports.qbx_vehiclefeatures:RemoveVehicleItems(entity)`: For removing the visual items on vehicle delete, only needed if you want it to be faster.
 
 # Work-in-Progress (WIP)
 This resource is currently a Work-in-Progress, as functionalities may change frequently due to ongoing updates within the Qbox framework.

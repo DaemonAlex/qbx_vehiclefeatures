@@ -84,9 +84,15 @@ AddEventHandler('ox_inventory:closedInventory', function(playerId, inventoryId)
 end)
 
 ---@param entity number
-AddEventHandler('entityRemoved', function(entity)
-    if not Entity(entity).state.trunkHasItems then return end
+local function removeVehicleItems(entity)
+	if not Entity(entity).state.trunkHasItems then return end
     Entity(entity).state:set('trunkHasItems', nil, true)
+end
+exports('RemoveVehicleItems', removeVehicleItems)
+
+---@param entity number
+AddEventHandler('entityRemoved', function(entity)
+    removeVehicleItems(entity)
 end)
 
 ---@param entity number
@@ -102,7 +108,7 @@ local function ensureVehicleItems(entity)
         Entity(entity).state:set('trunkHasItems', items or nil, true)
     end
 end
-exports('ensureVehicleItems', ensureVehicleItems)
+exports('EnsureVehicleItems', ensureVehicleItems)
 
 ---@param bagName string
 AddStateBagChangeHandler('vehicleid', '', function(bagName)
