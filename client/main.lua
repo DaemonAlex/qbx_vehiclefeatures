@@ -410,6 +410,9 @@ local function setupFlipTarget()
             icon = 'fa-solid fa-car-burst',
             label = locale('targets.flip'),
             distance = 2,
+			canInteract = function(entity, distance, coords, name)
+				return IsEntityUpsidedown(entity)
+			end,
             onSelect = function(data)
                 flipVehicle()
             end

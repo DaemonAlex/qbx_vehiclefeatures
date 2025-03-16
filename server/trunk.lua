@@ -58,7 +58,7 @@ local function onPlayerUnload(source)
 end
 
 ---@param source number
-AddEventHandler('QBCore:Server:OnPlayerUnload', function()
+AddEventHandler('QBCore:Server:OnPlayerUnload', function(source)
     onPlayerUnload(source)
 end)
 
