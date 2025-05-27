@@ -1,0 +1,75 @@
+{
+    "error": {
+      "no_vehicle_found": "Nie znaleziono pojazdu",
+      "extra_deactivated": "Dodatek %s został dezaktywowany",
+      "extra_not_present": "Dodatek %s nie istnieje w tym pojeździe",
+      "not_driver": "Nie jesteś kierowcą pojazdu",
+      "vehicle_driving_fast": "Pojazd porusza się zbyt szybko",
+      "race_harness_on": "Masz zapięte pasy bezpieczeństwa, nie możesz zmienić miejsca",
+      "vehicle_seatbelt_on": "Masz zapięte pasy bezpieczeństwa, nie możesz zmienić miejsca",
+      "not_kidnapped": "Nie porwano tej osoby",
+      "trunk_closed": "Bagażnik jest zamknięty",
+      "cant_enter_trunk": "Nie możesz wejść do tego bagażnika",
+      "already_in_trunk": "Jesteś już w bagażniku",
+      "cancel_task": "Anulowano zadanie",
+      "someone_in_trunk": "Ktoś już jest w bagażniku",
+      "no_vehicle_nearby": "W pobliżu nie ma pojazdu do wykonania tej akcji",
+      "seat_occupied": "Miejsce jest już zajęte",
+      "not_in_vehicle": "Musisz być w pojeździe, aby to zrobić",
+      "driver_occupied": "Ktoś już siedzi na miejscu kierowcy",
+      "vehicle_locked": "Pojazd ma zaciągnięty hamulec ręczny"
+    },
+    "info": {
+        "switched_seats": "Zmieniono miejsce na %s"
+    },
+    "progress": {
+      "flipping_car": "Przewracanie pojazdu..."
+    },
+    "success": {
+      "extra_activated": "Dodatek %s został aktywowany",
+      "entered_trunk": "Opuszczono bagażnik",
+      "flipped_car": "Pojazd został pomyślnie przewrócony!"
+    },
+    "general": {
+      "get_out_trunk_button": "[E] Wyjdź z bagażnika",
+      "close_trunk_button": "[G] Zamknij bagażnik",
+      "open_trunk_button": "[G] Otwórz bagażnik",
+      "getintrunk_command_desc": "Wejdź do bagażnika",
+      "putintrunk_command_desc": "Wsadź osobę do bagażnika",
+      "getouttrunk_command_desc": "Wyciągnij osobę z bagażnika"
+    },
+    "options": {
+      "flip": "Przewróć pojazd",
+      "push": "Popchnij pojazd",
+      "vehicle": "Opcje pojazdu",
+      "driver_seat": "Miejsce kierowcy",
+      "passenger_seat": "Miejsce pasażera",
+      "other_seats": "Inne miejsce",
+      "rear_left_seat": "Tylne lewe miejsce",
+      "rear_right_seat": "Tylne prawe miejsce",
+      "vehicleseats": "Miejsca w pojeździe",
+      "vehicleextras": "Dodatki pojazdu",
+      "getintrunk": "Wejdź do bagażnika",
+      "putintrunk": "Wsadź do bagażnika",
+      "getouttrunk": "Wyjdź z bagażnika",
+      "vehicledoors": "Drzwi pojazdu",
+      "driver_door": "Drzwi kierowcy",
+      "passenger_door": "Drzwi pasażera",
+      "rear_left_door": "Tylne lewe drzwi",
+      "rear_right_door": "Tylne prawe drzwi",
+      "vehiclewindows": "Szyby pojazdu",
+      "driver_window": "Szyba kierowcy",
+      "passenger_window": "Szyba pasażera",
+      "rear_left_window": "Tylna lewa szyba",
+      "rear_right_window": "Tylna prawa szyba",
+      "hood_door": "Maska",
+      "trunk_door": "Bagażnik"
+    },
+    "targets": {
+        "getintrunk": "Wejdź do bagażnika",
+        "putintrunk": "Wsadź osobę do bagażnika",
+        "getouttrunk": "Wyciągnij osobę z bagażnika",
+        "flip": "Przewróć pojazd",
+        "push": "Popchnij pojazd"
+    }
+}
