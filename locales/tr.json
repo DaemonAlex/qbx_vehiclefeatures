@@ -1,0 +1,75 @@
+{
+    "error": {
+        "no_vehicle_found": "Araç bulunamadı",
+        "extra_deactivated": "Ekstra %s devre dışı bırakıldı",
+        "extra_not_present": "Bu araçta ekstra %s mevcut değil",
+        "not_driver": "Araç sürücüsü değilsiniz",
+        "vehicle_driving_fast": "Araç çok hızlı hareket ediyor",
+        "race_harness_on": "Yarış kemerin bağlı, koltuğa geçemezsin",
+        "vehicle_seatbelt_on": "Yarış kemerin bağlı, koltuğa geçemezsin",
+        "not_kidnapped": "Bu kişiyi kaçırmadın",
+        "trunk_closed": "Bagaj kapalı",
+        "cant_enter_trunk": "Bu bagaja giremezsin",
+        "already_in_trunk": "Zaten bagajın içindesin",
+        "cancel_task": "Görev iptal edildi",
+        "someone_in_trunk": "Bagajda zaten biri var",
+        "no_vehicle_nearby": "Bu işlemi yapmak için yakında araç yok",
+        "seat_occupied": "Bu koltuk zaten dolu",
+        "not_in_vehicle": "Bu işlemi yapmak için araçta olmalısın",
+        "driver_occupied": "Sürücü koltuğunda zaten biri var",
+        "vehicle_locked": "Aracın el freni çekili"
+    },
+    "info": {
+        "switched_seats": "%s koltuğuna geçildi"
+    },
+    "progress": {
+        "flipping_car": "Araç ters çevriliyor..."
+    },
+    "success": {
+        "extra_activated": "Ekstra %s etkinleştirildi",
+        "entered_trunk": "Bagajın içindesin",
+        "flipped_car": "Araç başarıyla çevrildi!"
+    },
+    "general": {
+        "get_out_trunk_button": "[E] Bagajdan Çık",
+        "close_trunk_button": "[G] Bagajı Kapat",
+        "open_trunk_button": "[G] Bagajı Aç",
+        "getintrunk_command_desc": "Bagaja Gir",
+        "putintrunk_command_desc": "Kişiyi Bagaja Koy",
+        "getouttrunk_command_desc": "Kişiyi Bagajdan Çıkar"
+    },
+    "options": {
+        "flip": "Aracı Çevir",
+        "push": "Aracı İt",
+        "vehicle": "Araç Seçenekleri",
+        "driver_seat": "Sürücü Koltuğu",
+        "passenger_seat": "Yolcu Koltuğu",
+        "other_seats": "Diğer Koltuklar",
+        "rear_left_seat": "Arka Sol Koltuk",
+        "rear_right_seat": "Arka Sağ Koltuk",
+        "vehicleseats": "Araç Koltukları",
+        "vehicleextras": "Araç Ekstraları",
+        "getintrunk": "Bagaja Gir",
+        "putintrunk": "Bagaja Koy",
+        "getouttrunk": "Bagajdan Çıkar",
+        "vehicledoors": "Araç Kapıları",
+        "driver_door": "Sürücü Kapısı",
+        "passenger_door": "Yolcu Kapısı",
+        "rear_left_door": "Arka Sol Kapı",
+        "rear_right_door": "Arka Sağ Kapı",
+        "vehiclewindows": "Araç Camları",
+        "driver_window": "Sürücü Camı",
+        "passenger_window": "Yolcu Camı",
+        "rear_left_window": "Arka Sol Cam",
+        "rear_right_window": "Arka Sağ Cam",
+        "hood_door": "Kaput",
+        "trunk_door": "Bagaj"
+    },
+    "targets": {
+        "getintrunk": "Bagaja Gir",
+        "putintrunk": "Kişiyi Bagaja Koy",
+        "getouttrunk": "Kişiyi Bagajdan Çıkar",
+        "flip": "Aracı Çevir",
+        "push": "Aracı İt"
+    }
+}
